@@ -13,13 +13,13 @@ const Header = ({children}) => {
             <input id="my-drawer-3" type="checkbox" class="drawer-toggle" />
             <div
             
-            class="drawer-content flex flex-col text-white">
+            class="drawer-content flex flex-col text-black">
                 {/* <!-- Navbar --> */}
                 {/* bg-[#2623a2af] */}
-                <div class="w-full navbar p-0 nav-border bg-[#2623a2af]">
+                <div class="w-full navbar p-0 nav-border bg-white">
                     <div class="flex-1 px-2 mx-2">Navbar Title</div>
                     <div class="flex-none hidden lg:block">
-                        <ul class="menu menu-horizontal gap-5 text-white">
+                        <ul class="menu menu-horizontal gap-5 text-black">
                             {/* <!-- Navbar menu content here --> */}
                             {
                                 menus.map(({ name, to }, index) => <li
