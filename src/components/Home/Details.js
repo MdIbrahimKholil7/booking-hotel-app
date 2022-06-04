@@ -32,12 +32,12 @@ const Details = () => {
         })
     }
     return (
-        <div className='w-[90%] mx-auto text-white bg-[#1b2857fb] border-solid border-2 border-indigo-600 py-5 px-7 mt-[-36px] rounded relative' >
-            <div className='flex justify-between items-center'>
+        <div className='w-[95%] mx-auto text-white bg-[#1b2857fb] border-solid border-2 border-indigo-600 py-5 px-7 mt-[-87px] md:mt-[-50px] lg:mt-[-36px] rounded  text-[14px]' >
+            <div className='grid lg:grid-cols-4 md:grid-cols-2 justify-items-center grid-cols-1 gap-5'>
                 <div>
                     <input className='bg-transparent text-white outline-none' type="text" placeholder='Where are you going' />
                 </div>
-                <div className='cursor-pointer' >
+                <div className='cursor-pointer relative' >
                     <div className='flex ' onClick={() => setOpen(!open)}>
                         <AiFillCalendar
                             className='w-5 h-5 mr-2'
@@ -50,7 +50,7 @@ const Details = () => {
                         </span>
                     </div>
                     {
-                        open && <span className='absolute z-10 top-[67px] left-48 '>
+                        open && <span className='absolute z-10 top-[46px] left-[-136px] '>
                             <DateRange
                                 editableDateInputs={true}
                                 onChange={(item) => setDate([item.selection])}
@@ -62,7 +62,7 @@ const Details = () => {
                         </span>
                     }
                 </div>
-                <div>
+                <div className='z-10 text-[14px] relative'>
                     <div className='flex items-center'>
                         <span
                             className='mr-2'
@@ -71,7 +71,7 @@ const Details = () => {
                             {options.adult} Adult - {options.children} Children - {options.room} Room
                         </span>
                         {
-                            openOptions && <div className='absolute top-[67px] w-[230px] bg-[#171538] p-3'>
+                            openOptions && <div className='absolute top-[46px] w-[230px] bg-[#171538] p-3'>
                                 <div className='flex justify-between mb-5'>
                                     <span>Adult</span>
                                     <div>
@@ -108,7 +108,7 @@ const Details = () => {
                         }
                     </div>
                 </div>
-                <div>
+                <div className='flex justify-end'>
                     <button class="btn-xs bg-[#374ea2fb] rounded">Search</button>
                 </div>
             </div>
