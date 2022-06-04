@@ -45,7 +45,7 @@ const Details = () => {
 
                         <span>
                             {
-                                `${format(date[0].startDate, 'MM/dd/yy')} to ${format(date[0].endDate, 'MM/dd/yy')}`
+                                `${format(date[0].startDate, 'dd/MM/yy')} to ${format(date[0].endDate, 'dd/MM/yy')}`
                             }
                         </span>
                     </div>
