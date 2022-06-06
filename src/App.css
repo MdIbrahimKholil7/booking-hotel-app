@@ -29,6 +29,7 @@ line-height: 70px;
   background:#1b2857fb;
   top: 50%;
   left: -100px;
+  padding: 0 10px;
 }
 
 .room-title::after{
