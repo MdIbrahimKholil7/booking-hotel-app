@@ -5,7 +5,7 @@ const RoomsCard = ({ room }) => {
     return (
         <div>
             <div class="card max-w-lg bg-base-100 shadow-xl">
-                <img className='h-[300px]' src={img} alt={roomType} />
+                <img className='h-[300px] w-full' src={img} alt={roomType} />
                 <div class="card-body">
                     <h2 class="card-title text-[#1b2857fb]">
                         {roomType}

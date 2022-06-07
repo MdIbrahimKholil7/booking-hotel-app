@@ -17,7 +17,7 @@ const Rooms = () => {
             <h1 className='text-4xl font-oleo text-center '><span className='relative room-title ' >Our Rooms</span></h1>
             <p className='text-center my-5 tracking-[7px] md:text-[17px] text-[14px] text-gray-500'>ACROSS THE STREET FROM THE ORDINARY</p>
             </div>
-            <div className='grid lg:grid-cols-3 md:grid-cols-2 gap-x-7 gap-y-9 mt-20'>
+            <div className='grid lg:grid-cols-3 justify-center md:grid-cols-2 gap-x-7 gap-y-9 mt-20'>
                 {
                     rooms.map(room=><RoomsCard
                     key={room._id}
