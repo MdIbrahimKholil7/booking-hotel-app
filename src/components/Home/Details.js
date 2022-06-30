@@ -1,14 +1,19 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { AiFillCalendar } from 'react-icons/ai';
 import { FaUser } from 'react-icons/fa';
 import 'react-date-range/dist/styles.css'; // main css file
 import 'react-date-range/dist/theme/default.css'; // theme css file
 import { format } from 'date-fns'
-import { DateRangePicker } from 'react-date-range';
 import { DateRange } from 'react-date-range';
+import { useNavigate } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const Details = () => {
+    const navigate = useNavigate()
+    const optionRef = useRef()
     const [open, setOpen] = useState(false)
     const [openOptions, setOpenOptions] = useState(false)
+    const [place, setPlace] = useState('')
     const [date, setDate] = useState([
         {
             startDate: new Date(),
@@ -22,20 +27,57 @@ const Details = () => {
         room: 1
     })
 
+    const destination = [
+        'Dhaka', 'Chittagong', 'Sylhet', 'Coxs Bazar'
+    ]
+
+    // increase and decrease quantity 
     const handleOptions = (name, quantity) => {
         setOptions(prev => {
-            // console.log(prev)
             return {
                 ...prev,
                 [name]: quantity === 'increment' ? options[name] + 1 : options[name] - 1
             }
         })
     }
+    // get destination value 
+    const handleOption = (e) => {
+        setPlace(e.target.value)
+    }
+    // search function 
+    const handleSearch = () => {
+        if (place === '' || place === 'What is your destination') {
+            return toast.error('Please select a destination', {
+                pauseOnHover: true,
+                autoClose: 2000,
+            })
+        }
+        // navigate to search page 
+        navigate('searchResult', {
+            state: {
+                place,
+                options,
+                date,
+            }
+        })
+    }
     return (
         <div className='w-[95%] mx-auto text-white bg-[#1b2857fb] border-solid border-2 border-indigo-600 py-5 px-7 mt-[-87px] md:mt-[-50px] lg:mt-[-36px] rounded  text-[14px]' >
-            <div className='grid lg:grid-cols-4 md:grid-cols-2 justify-items-center grid-cols-1 gap-5'>
+            <div className='grid lg:grid-cols-4 md:grid-cols-2 justify-items-center items-center grid-cols-1 gap-5'>
                 <div>
-                    <input className='bg-transparent text-white outline-none' type="text" placeholder='Where are you going' />
+                    {/*   <input className='bg-transparent text-white outline-none' type="text" placeholder='Where are you going' /> */}
+                    <select ref={optionRef} onClick={handleOption} class="select text-[13px] w-full max-w-xs bg-transparent">
+                        <option disabled selected>What is your destination</option>
+                        {
+                            destination.map((elem, index) => <option
+                                key={index}
+                                value={elem}
+                                className='text-black'
+                            >
+                                {elem}
+                            </option>)
+                        }
+                    </select>
                 </div>
                 <div className='cursor-pointer relative' >
                     <div className='flex ' onClick={() => setOpen(!open)}>
@@ -57,7 +99,8 @@ const Details = () => {
                                 moveRangeOnFirstSelection={false}
                                 ranges={date}
                                 minDate={new Date()}
-                            // maxDate={date[0].startDate}
+                                // maxDate={date[0].startDate}
+                              
                             />
                         </span>
                     }
@@ -109,9 +152,10 @@ const Details = () => {
                     </div>
                 </div>
                 <div className='flex justify-end'>
-                    <button class="btn-xs bg-[#374ea2fb] rounded">Search</button>
+                    <button onClick={handleSearch} class="btn-xs bg-[#374ea2fb] rounded">Search</button>
                 </div>
             </div>
+            <ToastContainer />
         </div>
     );
 };

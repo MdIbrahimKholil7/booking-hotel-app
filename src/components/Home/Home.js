@@ -1,16 +1,19 @@
-import React from 'react';
-import Banner from './Banner';
-import Description from './Description';
-import Details from './Details';
-import Rooms from './Rooms';
+import React, { Suspense } from 'react';
+import loading from '../../assets/images/loading.gif'
+const Banner = React.lazy(() => import('./Banner'))
+const Rooms = React.lazy(() => import('./Rooms'))
+const Details = React.lazy(() => import('./Details'))
+const Description = React.lazy(() => import('./Description'))
 
 const Home = () => {
     return (
         <div>
-            <Banner/>
-            <Details/>
-            <Description/>
-            <Rooms/>
+            <Suspense fallback={<div><img className='w-full h-screen' src={loading} alt="loading" /></div>}>
+                <Banner />
+                <Details />
+                <Description />
+                <Rooms />
+            </Suspense>
         </div>
     );
 };

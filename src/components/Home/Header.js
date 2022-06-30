@@ -4,8 +4,8 @@ const Header = ({children}) => {
 
     const menus = [
         { name: 'Home', to: '/' },
-        { name: 'All Room', to: '/' },
-        { name: 'Contact Us', to: '/' },
+        { name: 'All Room', to: '/allRoom' },
+        { name: 'Contact Us', to: '/contactUs' },
     ]
 
     return (
@@ -16,22 +16,22 @@ const Header = ({children}) => {
             class="drawer-content flex flex-col text-black">
                 {/* <!-- Navbar --> */}
                 {/* bg-[#2623a2af] */}
-                <div class="w-full navbar p-0 nav-border bg-white">
-                    <div class="flex-1 px-2 mx-2">Navbar Title</div>
+                <div class="w-full navbar p-0 nav-border bg-white z-[999] sticky top-0 left-0">
+                    <div class="flex-1 px-2 text-3xl font-bold mx-2">Villena</div>
                     <div class="flex-none hidden lg:block">
                         <ul class="menu menu-horizontal gap-5 text-black">
                             {/* <!-- Navbar menu content here --> */}
                             {
                                 menus.map(({ name, to }, index) => <li
                                     key={index}
-                                    className='relative'
+                                    className='relative font-[500]'
                                 >
                                     <NavLink  className={({ isActive }) => isActive ? 'active-border' : ''} to={to}>{name}</NavLink>
                                 </li>)
 
                             }
                             <>
-                                <li> <Link to='/login'>Login</Link></li>
+                                <li className='font-[500]'> <Link to='/login'>Login</Link></li>
                             </>
                         </ul>
                     </div>

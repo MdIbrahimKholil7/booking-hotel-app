@@ -42,3 +42,9 @@ line-height: 70px;
   right: -100px;
 }
 
+.sticky-bar{
+  position: sticky !important;
+  top: 61px;
+  left: 0;
+  height: 70vh;
+}

@@ -6,7 +6,7 @@ const Rooms = () => {
     const [rooms, setRoom] = useState([])
    useEffect(()=>{
        (async()=>{
-        const {data}=await fetcher.get('room')
+        const {data}=await fetcher.get('getRoom')
         setRoom(data)
        })()
    },[])
