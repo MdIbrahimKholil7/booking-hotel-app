@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useEffect } from 'react';
 import { useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { ImLocation2 } from 'react-icons/im';
 import { AiTwotoneHome } from 'react-icons/ai';
 import { BsFillCheckSquareFill } from 'react-icons/bs';
@@ -15,11 +15,13 @@ import room3 from '../../assets/images/room3.jpg'
 import room4 from '../../assets/images/room4.jpg'
 import room5 from '../../assets/images/room5.jpg'
 const RoomDetails = () => {
-
+    const location=useLocation()
+    console.log(location)
     const { id } = useParams()
     const [singleData, setSingleData] = useState({})
     const [imgIndex, setImgIndex] = useState(0)
     const { city, desc, img, ratings, price, roomType } = singleData || {}
+    const navigate=useNavigate()
     useEffect(() => {
         (async () => {
             const { data } = await axios.get(`http://localhost:5000/getRoom/room/${id}`)
@@ -48,6 +50,10 @@ const RoomDetails = () => {
             }
         }
     }
+    // payment route 
+    const handlePayment=()=>{
+        navigate('/payment',{state:location})
+    }
 
     return (
         <div className='mt-9'>
@@ -64,8 +70,8 @@ const RoomDetails = () => {
                                     />
                                 </span> <span className=''>{city},Bangladesh</span></h1>
                             <h1 className='lg:text-2xl xl:text-3xl font-bold'>{desc}</h1>
-                            <h3 className='font-bold mt-2 lg:text-[18] xl:text-xl mb-4'>Room Type: {roomType}</h3>
-                            <button class="btn bg-indigo-700 text-white rounded-full hover:bg-indigo-800">Book Now</button>
+                            <h3 className='font-bold mt-2 lg:text-[18] xl:text-xl mb-4'>Room Type : {roomType}</h3>
+                            <button onClick={handlePayment} class="btn bg-indigo-700 text-white rounded-full hover:bg-indigo-800">Book Now</button>
                         </div>
 
                         <div class="divider my-7"></div>

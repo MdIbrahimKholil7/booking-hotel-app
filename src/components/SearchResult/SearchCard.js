@@ -9,10 +9,11 @@ const SearchCard = ({ elem, location }) => {
     const startDate = format(location.state.date[0].startDate, 'dd/MM/yy').split('/')
     const endDate = format(location.state.date[0].endDate, 'dd/MM/yy').split('/')
     const result = Number(endDate[0]) - Number(startDate[0]) + 1
+    
     const navigate=useNavigate()
     // handle navigate function 
     const handleNavigate=(id)=>{
-        navigate(`/roomDetails/${id}`)
+        navigate(`/roomDetails/${id}`,{state:{location}})
     }
     return (
         <div>
