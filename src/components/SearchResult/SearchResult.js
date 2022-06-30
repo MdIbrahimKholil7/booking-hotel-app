@@ -22,7 +22,7 @@ const SearchResult = () => {
   const destination = [
     'Dhaka', 'Chittagong', 'Sylhet', 'Coxs Bazar'
   ]
-
+  console.log(location)
   useEffect(() => {
     axios.get(`http://localhost:5000/getRoom/room?room=${location.state.place}`)
       .then(data => setSearchRoom(data.data))

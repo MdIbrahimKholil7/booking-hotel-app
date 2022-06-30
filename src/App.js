@@ -5,6 +5,7 @@ import Header from './components/Home/Header';
 import Footer from './components/Shared/Footer';
 import SearchResult from './components/SearchResult/SearchResult';
 import loading from '../src/assets/images/loading.gif'
+import RoomDetails from './components/RoomDetails/RoomDetails';
 function App() {
   const Home=React.lazy(()=>import('../src/components/Home/Home'))
   return (
@@ -18,6 +19,7 @@ function App() {
           </Suspense>}/>
 
           <Route path='searchResult' element={<SearchResult/>}/>
+          <Route path='roomDetails/:id' element={<RoomDetails/>}/>
         </Routes>
         <Footer/>
       </Header>
