@@ -3,7 +3,7 @@ import host from '../../../assets/images/rowdra.jpg'
 const WhosComing = () => {
     return (
         <div className='mt-9'>
-            <div className='flex justify-between items-end'>
+            <div className='flex justify-between gap-4 items-end'>
                 <div>
                     <h1 className='text-xl font-bold mb-2'>Traveling for work?</h1>
                     <p className='text-[13px] leading-7'>Say hello to your host</p>
@@ -11,7 +11,7 @@ const WhosComing = () => {
                 </div>
                 <div>
                     <div class="avatar">
-                        <div class="w-16 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+                        <div class="md:w-16 w-12 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
                             <img src={host} alt='' />
                         </div>
                     </div>

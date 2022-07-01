@@ -48,7 +48,7 @@ const Payment = () => {
                         <Outlet></Outlet>
                     </div>
                 </div>
-                <div className='flex justify-end'>
+                <div className='flex md:justify-end justify-center mt-9 md:mt-0'>
                     <div class="card flex-shrink-0 w-full max-w-md shadow-2xl bg-base-100">
                         <div class="card-body">
                             <div className='flex justify-between'>

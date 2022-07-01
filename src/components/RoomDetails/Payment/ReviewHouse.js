@@ -21,7 +21,7 @@ const ReviewHouse = () => {
             <div>
                 <h1 className='font-bold text-3xl my-5'>Review house rules</h1>
                 <p className='text-xl font-bold font-sans'>{Number(result) + 1} nights in {time.place}</p>
-                <div className='flex justify-between mt-5'>
+                <div className='flex justify-between gap-5 flex-col lg:flex-row mt-5'>
                     <div className='flex '>
                         <span className='bg-gray-200 rounded-md p-1 flex justify-center items-center mr-4 font-bold'>{startDate1[0].split(',')[0]}</span>
                         <div className='text-[#9e9a9a]'>
