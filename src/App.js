@@ -10,6 +10,8 @@ import Payment from './components/RoomDetails/Payment/Payment';
 import ReviewHouse from './components/RoomDetails/Payment/ReviewHouse';
 import WhosComing from './components/RoomDetails/Payment/WhosComing';
 import ConfirmPayment from './components/RoomDetails/Payment/ConfirmPayment';
+import Login from './components/Shared/Login/Login';
+import SignUp from './components/Shared/Login/SignUp';
 
 export const RoomInformation = React.createContext('fds')
 
@@ -37,6 +39,8 @@ function App() {
               <Route path='whosComing' element={<WhosComing />} />
               <Route path='confirmPayment' element={<ConfirmPayment />} />
             </Route>
+            <Route path='login' element={<Login/>}/>
+            <Route path='signup' element={<SignUp/>}/>
           </Routes>
           <Footer />
         </Header>

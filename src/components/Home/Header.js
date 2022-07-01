@@ -31,7 +31,7 @@ const Header = ({children}) => {
 
                             }
                             <>
-                                <li className='font-[500]'> <Link to='/login'>Login</Link></li>
+                                <li className='font-[500] mr-2'> <NavLink className={({ isActive }) => isActive ? 'flex items-center active-border' : ''}  to='/login'>Login</NavLink></li>
                             </>
                         </ul>
                     </div>
