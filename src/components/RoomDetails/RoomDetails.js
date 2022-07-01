@@ -20,7 +20,7 @@ const RoomDetails = () => {
     const [imgIndex, setImgIndex] = useState(0)
     const location=useLocation()
     console.log(location)
-    const { city, desc, img, ratings, price, roomType } = singleData || {}
+    const { city, desc, img, roomType } = singleData || {}
     const navigate=useNavigate()
     useEffect(() => {
         (async () => {
@@ -53,6 +53,7 @@ const RoomDetails = () => {
     // payment route 
     const handlePayment=()=>{
         navigate('/payment')
+        localStorage.setItem('roomId',JSON.stringify(id))
     }
 
     return (

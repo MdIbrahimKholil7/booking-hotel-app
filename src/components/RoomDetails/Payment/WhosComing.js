@@ -19,6 +19,7 @@ const WhosComing = () => {
             </div>
             <div className='mt-5'>
                 <textarea class="textarea textarea-bordered w-[70%]" placeholder="Please write something about yourself"></textarea>
+                <button class="btn btn-active btn-primary mt-5 block">Continue</button>
             </div>
         </div>
     );
