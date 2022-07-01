@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link, Outlet } from 'react-router-dom';
+import { Link, NavLink, Outlet } from 'react-router-dom';
 import { BiChevronRight } from 'react-icons/bi';
 import axios from 'axios';
 import { AiFillStar } from 'react-icons/ai';
@@ -30,18 +30,18 @@ const Payment = () => {
             <div className='grid md:grid-cols-2 gap-8 mt-9 px-5 mb-14'>
                 <div className=''>
                     <div>
-                        <div className='grid lg:grid-cols-3 gap-0 font-bold text-gray-400 xl:text-[15px] text-[12px]
+                        <div className='grid lg:grid-cols-3 gap-0 font-bold  xl:text-[15px] text-[12px] text-gray-400
                         '>
-                            <Link to='/payment' className='flex items-center '>
+                            <NavLink  to='/payment' className={({ isActive }) => isActive ? 'flex items-center text-black' : 'flex items-center'}  >
                                 1.Reviews House Rules <BiChevronRight
-                                    className='text-[24px]'
-                                /></Link>
-                            <Link to='whosComing' className='flex items-center'>2.Who's Coming ? <BiChevronRight
+                                    className='text-[20px]'
+                                /></NavLink>
+                            <NavLink className={({ isActive }) => isActive ? 'flex items-center text-black' : 'flex items-center'}  to='whosComing' >2.Who's Coming ? <BiChevronRight
                                 className='text-[24px]'
-                            /></Link>
-                            <Link to='confirmPayment' className='flex items-center'>1.Confirm And Pay <BiChevronRight
+                            /></NavLink>
+                            <NavLink className={({ isActive }) => isActive ? 'flex items-center text-black' : 'flex items-center'}  to='confirmPayment'>1.Confirm And Pay <BiChevronRight
                                 className='text-[24px]'
-                            /></Link>
+                            /></NavLink>
                         </div>
                     </div>
                     <div>
@@ -60,7 +60,7 @@ const Payment = () => {
                                 </div>
                                 <img className='w-24 rounded-xl' src={img} alt="" />
                             </div>
-                            <div>
+                            <div className='mt-7'>
                                 <div>
                                     <p className='mb-2 font-bold'>Dates</p>
                                     <div className='border-solid border-[1px] p-2 f border-[#9e9a9a]'>
