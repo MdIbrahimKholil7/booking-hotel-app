@@ -5,12 +5,14 @@ const Rooms = React.lazy(() => import('./Rooms'))
 const Details = React.lazy(() => import('./Details'))
 const Description = React.lazy(() => import('./Description'))
 
-const Home = () => {
+const Home = ({setRoomInformation}) => {
     return (
         <div>
             <Suspense fallback={<div><img className='w-full h-screen' src={loading} alt="loading" /></div>}>
                 <Banner />
-                <Details />
+                <Details 
+                setRoomInformation={setRoomInformation}
+                />
                 <Description />
                 <Rooms />
             </Suspense>

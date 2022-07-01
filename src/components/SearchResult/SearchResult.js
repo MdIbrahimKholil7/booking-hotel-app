@@ -7,10 +7,13 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import SearchCard from './SearchCard';
 import axios from "axios";
+import useTimeZone from '../hooks/useTimeZone';
 
 const SearchResult = () => {
 
   const location = useLocation()
+  console.log(location)
+  console.log(useTimeZone())
   const [searchRoom, setSearchRoom] = useState([])
   const [load, setLoad] = useState(false)
   const [place, setPlace] = useState('')
@@ -22,7 +25,7 @@ const SearchResult = () => {
   const destination = [
     'Dhaka', 'Chittagong', 'Sylhet', 'Coxs Bazar'
   ]
-  console.log(location)
+
   useEffect(() => {
     axios.get(`http://localhost:5000/getRoom/room?room=${location.state.place}`)
       .then(data => setSearchRoom(data.data))
@@ -31,7 +34,7 @@ const SearchResult = () => {
 
   const handleOption = (e) => {
     setPlace(e.target.value)
-    console.log(e.target.value)
+   
   }
   const handleOptions = (name, quantity) => {
     setOptions(prev => {

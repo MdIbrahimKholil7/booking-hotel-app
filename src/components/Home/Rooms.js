@@ -10,7 +10,7 @@ const Rooms = () => {
         setRoom(data)
        })()
    },[])
-   console.log(rooms)
+ 
     return (
         <div className='my-9 px-5'>
             <div>

@@ -15,11 +15,11 @@ import room3 from '../../assets/images/room3.jpg'
 import room4 from '../../assets/images/room4.jpg'
 import room5 from '../../assets/images/room5.jpg'
 const RoomDetails = () => {
-    const location=useLocation()
-    console.log(location)
     const { id } = useParams()
     const [singleData, setSingleData] = useState({})
     const [imgIndex, setImgIndex] = useState(0)
+    const location=useLocation()
+    console.log(location)
     const { city, desc, img, ratings, price, roomType } = singleData || {}
     const navigate=useNavigate()
     useEffect(() => {
@@ -52,7 +52,7 @@ const RoomDetails = () => {
     }
     // payment route 
     const handlePayment=()=>{
-        navigate('/payment',{state:location})
+        navigate('/payment')
     }
 
     return (

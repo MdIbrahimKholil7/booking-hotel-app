@@ -8,7 +8,7 @@ import { DateRange } from 'react-date-range';
 import { useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-const Details = () => {
+const Details = ({setRoomInformation}) => {
     const navigate = useNavigate()
     const optionRef = useRef()
     const [open, setOpen] = useState(false)
@@ -60,6 +60,10 @@ const Details = () => {
                 date,
             }
         })
+
+        localStorage.setItem('time-zone',JSON.stringify({place,date,options}))
+        // send data to the app component for context api
+        setRoomInformation({place,options,date})
     }
     return (
         <div className='w-[95%] mx-auto text-white bg-[#1b2857fb] border-solid border-2 border-indigo-600 py-5 px-7 mt-[-87px] md:mt-[-50px] lg:mt-[-36px] rounded  text-[14px]' >
