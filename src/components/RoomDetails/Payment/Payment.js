@@ -5,6 +5,7 @@ import axios from 'axios';
 import { AiFillStar } from 'react-icons/ai';
 import { BiRightArrowAlt } from 'react-icons/bi';
 import { format, parseISO } from 'date-fns';
+import { ImCross } from 'react-icons/im';
 const Payment = () => {
 
     const result = JSON.parse(localStorage.getItem('time-zone'))
@@ -13,7 +14,10 @@ const Payment = () => {
     const id = JSON.parse(localStorage.getItem('roomId'))
     const startDate = format(parseISO(result?.date[0].startDate), 'dd/MM/yy')
     const endDate = format(parseISO(result?.date[0].endDate), 'dd/MM/yy')
-    console.log(id)
+    const night = Number(endDate.split('/')[0]) - Number(startDate.split('/')[0])+1
+    console.log(console.log(night+1))
+    const serviceFee=21
+    const cleaningFee=10
     useEffect(() => {
         (async () => {
             const { data } = await axios.get(`http://localhost:5000/getRoom/room/${id}`)
@@ -44,7 +48,7 @@ const Payment = () => {
                         <Outlet></Outlet>
                     </div>
                 </div>
-                <div className='flex justify-center'>
+                <div className='flex justify-end'>
                     <div class="card flex-shrink-0 w-full max-w-md shadow-2xl bg-base-100">
                         <div class="card-body">
                             <div className='flex justify-between'>
@@ -62,10 +66,36 @@ const Payment = () => {
                                     <div className='border-solid border-[1px] p-2 f border-[#9e9a9a]'>
                                         <div className='flex items-center justify-evenly font-[600]'>
                                             {startDate}
-                                            <BiRightArrowAlt/>
+                                            <BiRightArrowAlt />
                                             {endDate}
                                         </div>
                                     </div>
+                                </div>
+                                <div className='mt-9'>
+                                    <div className='my-5'>
+                                        <p className='flex justify-between items-center'><span className='flex justify-between items-center'>${price}  * {night}  nights </span><span
+                                         className='pr-5'
+                                        >${night*price}</span></p>
+                                    </div>
+                                    <div className="divider"></div>
+                                    <div className='my-5'>
+                                        <p className='flex justify-between items-center'><span className='flex justify-between items-center'>Cleaning fee </span><span
+                                         className='pr-5'
+                                        >${cleaningFee}</span></p>
+                                    </div>
+                                    <div className="divider"></div>
+                                    <div className='my-5'>
+                                        <p className='flex justify-between items-center'><span className='flex justify-between items-center'>Service fee </span><span
+                                         className='pr-5'
+                                        >${serviceFee}</span></p>
+                                    </div>
+                                    <div className="divider"></div>
+                                    <div className='my-5 font-bold'>
+                                        <p className='flex justify-between items-center'><span className='flex justify-between items-center'>Total </span><span
+                                         className='pr-5'
+                                        >${night*price + serviceFee + cleaningFee}</span></p>
+                                    </div>
+                                 
                                 </div>
                             </div>
                         </div>
