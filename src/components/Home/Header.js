@@ -1,7 +1,10 @@
+import { signOut } from 'firebase/auth';
 import React from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link, NavLink } from 'react-router-dom';
-const Header = ({children}) => {
-
+import auth from '../../firebase_init';
+const Header = ({ children }) => {
+    const [user] = useAuthState(auth)
     const menus = [
         { name: 'Home', to: '/' },
         { name: 'All Room', to: '/allRoom' },
@@ -12,8 +15,8 @@ const Header = ({children}) => {
         <div class="drawer drawer-end">
             <input id="my-drawer-3" type="checkbox" class="drawer-toggle" />
             <div
-            
-            class="drawer-content flex flex-col text-black">
+
+                class="drawer-content flex flex-col text-black">
                 {/* <!-- Navbar --> */}
                 {/* bg-[#2623a2af] */}
                 <div class="w-full navbar p-0 nav-border bg-white z-[999] sticky top-0 left-0">
@@ -26,12 +29,14 @@ const Header = ({children}) => {
                                     key={index}
                                     className='relative font-[500]'
                                 >
-                                    <NavLink  className={({ isActive }) => isActive ? 'active-border' : ''} to={to}>{name}</NavLink>
+                                    <NavLink className={({ isActive }) => isActive ? 'active-border' : ''} to={to}>{name}</NavLink>
                                 </li>)
 
                             }
                             <>
-                                <li className='font-[500] mr-2'> <NavLink className={({ isActive }) => isActive ? 'flex items-center active-border' : ''}  to='/login'>Login</NavLink></li>
+                                {
+                                    user ? <button onClick={()=>signOut(auth)} className='font-[500] mr-2'>Log Out</button> : <li className='font-[500] mr-2'> <NavLink className={({ isActive }) => isActive ? 'flex items-center active-border' : ''} to='/login'>Login</NavLink></li>
+                                }
                             </>
                         </ul>
                     </div>

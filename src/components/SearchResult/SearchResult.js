@@ -7,13 +7,13 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import SearchCard from './SearchCard';
 import axios from "axios";
-import useTimeZone from '../hooks/useTimeZone';
+
 
 const SearchResult = () => {
 
   const location = useLocation()
   console.log(location)
-  console.log(useTimeZone())
+
   const [searchRoom, setSearchRoom] = useState([])
   const [load, setLoad] = useState(false)
   const [place, setPlace] = useState('')
