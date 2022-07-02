@@ -15,7 +15,7 @@ const useLog = (error) => {
                 case 'auth/invalid-email':
                     setLogError('Email is not valid');
                     break;
-                case 'auth/invalid-password':
+                case 'auth/wrong-password':
                     setLogError('Wrong password');
                     break;
                 default:

@@ -9,7 +9,7 @@ import useLog from '../../hooks/useLog';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Loading from '../Loading';
-import { useEffect } from 'react';
+
 const SignUp = () => {
     const [passError, setPassError] = useState('')
     const { register, handleSubmit, watch, formState: { errors }, reset } = useForm();
@@ -24,14 +24,12 @@ const SignUp = () => {
     const [updateProfile, updating, uodateError] = useUpdateProfile(auth);
     const [logError] = useLog(error)
 
-    useEffect(() => {
-        if (loading || updating) {
-            return <Loading />
-        }
-    }, [])
+    if (loading || updating) {
+        return <Loading />
+    }
     const onSubmit = async (data) => {
         console.log(data)
-        if(logError) return
+
         const { name, email, password, conPass, } = data
         if (password !== conPass) {
             return setPassError('Password not match')
@@ -48,6 +46,7 @@ const SignUp = () => {
                 <div class=" grid lg:grid-cols-2 gap-7 ">
 
                     <div class="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+                        <h1 className='text-center text-2xl mt-3 font-bold'>Please Login</h1>
                         <form onSubmit={handleSubmit(onSubmit)}>
                             <div class="card-body">
                                 <div class="form-control">

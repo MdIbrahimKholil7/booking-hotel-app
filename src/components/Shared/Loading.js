@@ -2,8 +2,12 @@ import React from 'react';
 import loading from '../../assets/images/original.gif'
 const Loading = () => {
     return (
-        <div className='absolute top-0 left-0 w-screen h-screen'>
-            <img className='w-full h-full' src={loading} alt="loading" />
+        <div className='h-screen w-screen'>
+            <div className=' w-screen h-screen flex justify-center items-center'>
+                <div class="flex items-center justify-center ">
+                    <div class="w-16 h-16 border-b-2 border-gray-900 rounded-full animate-spin"></div>
+                </div>
+            </div>
         </div>
     );
 };
