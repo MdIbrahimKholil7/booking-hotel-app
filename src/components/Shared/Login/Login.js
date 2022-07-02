@@ -23,17 +23,18 @@ const Login = () => {
         loading,
         error,
     ] = useSignInWithEmailAndPassword(auth);
-    const [logError]=useLog(error)
+    const [logError]=useLog(error || setError)
     console.log(logError)
     console.log(error)
-    if(loading || sending ) return <Loading/>
-    const passReset=()=>{
-        sendPasswordResetEmail(email)
+    if(loading) return <Loading/>
+    const passReset=async()=>{
+        await sendPasswordResetEmail(email)
         toast.success('Check email for password reset')
     }
     const onSubmit = data => {
         const { email, password } = data
         signInWithEmailAndPassword(email, password)
+        reset()
     }
 
     return (
@@ -64,7 +65,7 @@ const Login = () => {
                                     />
                                     {
                                         (errors.email?.type === 'required' || errors.email?.type === 'pattern') && <label className="label">
-                                            {<span className="label-text-alt text-red-500">{errors.email.message}</span>}
+                                            {errors.email?.type === 'required'&&<span className="label-text-alt text-red-500">{errors.email.message}</span>}
                                             {errors.email?.type === 'pattern' && <span className="label-text-alt text-red-500">{errors.email.message}</span>}
                                         </label>
                                     }
@@ -106,6 +107,7 @@ const Login = () => {
                                 <div class="divider">OR</div>
                                 <Social />
                             </div>
+                            <ToastContainer/>
                         </form>
                     </div>
                     <div class=" bg-red-500 lg:flex hidden">
