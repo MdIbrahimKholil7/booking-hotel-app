@@ -2,12 +2,13 @@ import React from 'react';
 import { AiFillStar } from 'react-icons/ai';
 import { format } from 'date-fns';
 import { useNavigate } from 'react-router-dom';
+import { parseISO } from 'date-fns/esm';
 const SearchCard = ({ elem, location }) => {
 
     const { desc, roomType, price, img, ratings,_id } = elem || {}
     // formating date 
-    const startDate = format(location.state.date[0].startDate, 'dd/MM/yy').split('/')
-    const endDate = format(location.state.date[0].endDate, 'dd/MM/yy').split('/')
+    const startDate = format(parseISO(location.date[0].startDate), 'dd/MM/yy').split('/')
+    const endDate = format(parseISO(location.date[0].endDate), 'dd/MM/yy').split('/')
     const result = Number(endDate[0]) - Number(startDate[0]) + 1
     
     const navigate=useNavigate()

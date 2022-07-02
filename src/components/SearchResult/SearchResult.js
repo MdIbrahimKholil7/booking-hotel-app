@@ -1,21 +1,25 @@
-import { format } from 'date-fns';
+import { format, parseISO } from 'date-fns';
 import React, { useState } from 'react';
 import { useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { AiFillCalendar } from 'react-icons/ai';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import SearchCard from './SearchCard';
 import axios from "axios";
-
+import Loading from '../Shared/Loading'
+import axiosPrivate from '../../api/axiosPrive';
+import { signOut } from 'firebase/auth';
+import auth from '../../firebase_init';
 
 const SearchResult = () => {
 
-  const location = useLocation()
-  console.log(location)
-
+  const location = JSON.parse(localStorage.getItem('time-zone'))
+  const [city, setCity] = useState(location?.place)
+  const [locationCity, setLocationCity] = useState(location?.place)
   const [searchRoom, setSearchRoom] = useState([])
-  const [load, setLoad] = useState(false)
+  const navigate=useNavigate()
+  const [load, setLoad] = useState(true)
   const [place, setPlace] = useState('')
   const [options, setOptions] = useState({
     adult: 1,
@@ -26,15 +30,41 @@ const SearchResult = () => {
     'Dhaka', 'Chittagong', 'Sylhet', 'Coxs Bazar'
   ]
 
-  useEffect(() => {
-    axios.get(`http://localhost:5000/getRoom/room?room=${location.state.place}`)
-      .then(data => setSearchRoom(data.data))
-  }, [location.state.place, load])
 
+  useEffect(() => {
+
+   /*  axios.get(`http://localhost:5000/getRoom/room?room=${city}`, {
+      authorization: `Bearer ${localStorage.getItem('hotelAccessToken')}`
+    })
+      .then(data => setSearchRoom(data.data)) */
+    
+
+    fetch(`http://localhost:5000/getRoom/room?room=${city}`, {
+      headers: {
+        'authorization': `Bearer ${localStorage.getItem('hotelAccessToken')}`
+      }
+    })
+      .then(res => {
+        console.log(res)
+        if(res.status === 401 || res.status===403) {
+          signOut(auth) 
+          navigate('/login')
+        }
+       return res.json()})
+      .then(data => {
+        setSearchRoom(data.result)
+        setLoad(false)
+        console.log(data)})
+  }, [city])
+
+  if (load) {
+    console.log('click')
+    return <Loading />
+  }
 
   const handleOption = (e) => {
     setPlace(e.target.value)
-   
+
   }
   const handleOptions = (name, quantity) => {
     setOptions(prev => {
@@ -52,16 +82,17 @@ const SearchResult = () => {
         autoClose: 2000,
       })
     }
-    location.state.place = place
-    setLoad(!load)
+    setLocationCity(place)
+    setCity(place)
   }
+
 
   return (
     <div className='px-5 mt-16'>
       <div className='flex items-start w-full justify-center md:justify-between  flex-col lg:flex-row'>
         <div className='max-w-sm p-3 mx-auto lg:mx-0 lg:sticky top-20 '>
           <div className='shadow-md rounded-md mb-5 py-3 text-center'>
-            <h1 className=''>Your Location Is {location.state.place}</h1>
+            <h1 className=''>Your Location Is {locationCity}</h1>
           </div>
           {/* arrival div  */}
           <div className='flex justify-between items-center my-9 '>
@@ -70,7 +101,7 @@ const SearchResult = () => {
               <div className='flex justify-between items-center'>
                 <p className='text-[14px]'>
                   {
-                    format(location.state.date[0].startDate, 'dd/MM/yy')
+                    format(parseISO(location?.date[0]?.startDate), 'dd/MM/yy')
                   }
                 </p>
                 <span>
@@ -85,7 +116,7 @@ const SearchResult = () => {
               <div className='flex justify-between items-center'>
                 <p className='text-[14px]'>
                   {
-                    format(location.state.date[0].endDate, 'dd/MM/yy')
+                    format(parseISO(location?.date[0]?.endDate), 'dd/MM/yy')
                   }
                 </p>
                 <span>
@@ -100,7 +131,7 @@ const SearchResult = () => {
           <select onClick={handleOption} class="select shadow-lg text-[16px] w-full max-w-xs ">
             <option disabled selected>Change your destination</option>
             {
-              destination.map((elem, index) => <option
+              destination?.map((elem, index) => <option
                 key={index}
                 value={elem}
                 className='text-black'
@@ -169,7 +200,7 @@ const SearchResult = () => {
         </div>
       </div>
       <div>
-       
+
       </div>
       <ToastContainer />
     </div>

@@ -14,24 +14,25 @@ import room2 from '../../assets/images/room2.jpg'
 import room3 from '../../assets/images/room3.jpg'
 import room4 from '../../assets/images/room4.jpg'
 import room5 from '../../assets/images/room5.jpg'
+import Loading from '../Shared/Loading';
 const RoomDetails = () => {
     const { id } = useParams()
     const [singleData, setSingleData] = useState({})
     const [imgIndex, setImgIndex] = useState(0)
-    const location=useLocation()
-    console.log(location)
     const { city, desc, img, roomType } = singleData || {}
+    const [load,setLoad]=useState(true)
     const navigate=useNavigate()
     useEffect(() => {
         (async () => {
             const { data } = await axios.get(`http://localhost:5000/getRoom/room/${id}`)
             setSingleData(data)
+            setLoad(false)
         })()
     }, [id])
 
     // slider image array 
     const room = [img, room1, room2, room3, room4, room5]
-
+    if(load) return <Loading/>
     // handle image slider 
     const handleIncreaseImg = (name) => {
         if (name === 'increase') {

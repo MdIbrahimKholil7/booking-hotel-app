@@ -12,6 +12,7 @@ import WhosComing from './components/RoomDetails/Payment/WhosComing';
 import ConfirmPayment from './components/RoomDetails/Payment/ConfirmPayment';
 import Login from './components/Shared/Login/Login';
 import SignUp from './components/Shared/Login/SignUp';
+import RequireAuth from './components/Shared/RequireAuth';
 
 export const RoomInformation = React.createContext('fds')
 
@@ -32,15 +33,17 @@ function App() {
               />
             </Suspense>} />
 
-            <Route path='searchResult' element={<SearchResult />} />
-            <Route path='roomDetails/:id' element={<RoomDetails />} />
+            <Route path='searchResult' element={<RequireAuth>
+              <SearchResult />
+            </RequireAuth>} />
+            <Route path='roomDetails/:id' element={<RequireAuth><RoomDetails /></RequireAuth>} />
             <Route path='payment' element={<Payment />}>
               <Route index element={<ReviewHouse />} />
               <Route path='whosComing' element={<WhosComing />} />
               <Route path='confirmPayment' element={<ConfirmPayment />} />
             </Route>
-            <Route path='login' element={<Login/>}/>
-            <Route path='signup' element={<SignUp/>}/>
+            <Route path='login' element={<Login />} />
+            <Route path='signup' element={<SignUp />} />
           </Routes>
           <Footer />
         </Header>

@@ -9,12 +9,13 @@ import useLog from '../../hooks/useLog';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Loading from '../Loading';
+import useToken from '../../hooks/useToken';
 
 const SignUp = () => {
     const [passError, setPassError] = useState('')
     const { register, handleSubmit, watch, formState: { errors }, reset } = useForm();
     const [user] = useAuthState(auth)
-
+    const [token]=useToken(user)
     const [
         createUserWithEmailAndPassword,
         passUser,

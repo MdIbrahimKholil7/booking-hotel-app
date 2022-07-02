@@ -3,14 +3,22 @@ import { Link } from 'react-router-dom';
 import Social from './Social';
 import house from '../../../assets/images/login.png'
 import { useForm } from 'react-hook-form';
-import { useSendPasswordResetEmail, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { useAuthState, useSendPasswordResetEmail, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase_init';
 import Loading from '../Loading';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import useLog from '../../hooks/useLog';
+import useToken from '../../hooks/useToken';
+import { useNavigate,useLocation } from 'react-router-dom';
 const Login = () => {
+    const [user]=useAuthState(auth)
+    const [token]=useToken(user)
     const [email, setEmail] = useState('second')
+    const navigate=useNavigate()
+    const location=useLocation()
+    console.log(location)
+    const from=location?.state?.from?.pathname || '/'
     const { register, handleSubmit, watch, formState: { errors }, reset } = useForm();
     // pssword reset 
     const [sendPasswordResetEmail, sending, setError] = useSendPasswordResetEmail(
@@ -19,13 +27,12 @@ const Login = () => {
     //   login function 
     const [
         signInWithEmailAndPassword,
-        user,
+        emailUser,
         loading,
         error,
     ] = useSignInWithEmailAndPassword(auth);
     const [logError]=useLog(error || setError)
-    console.log(logError)
-    console.log(error)
+    if(token) navigate(from,{replace:true})
     if(loading) return <Loading/>
     const passReset=async()=>{
         await sendPasswordResetEmail(email)
