@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Social from './Social';
 import house from '../../../assets/images/login.png'
 import { useForm } from "react-hook-form";
@@ -16,6 +16,10 @@ const SignUp = () => {
     const { register, handleSubmit, watch, formState: { errors }, reset } = useForm();
     const [user] = useAuthState(auth)
     const [token]=useToken(user)
+    const location=useLocation()
+    const navigate=useNavigate()
+    const from=location?.state?.from.state?.from?.pathname || '/'
+    console.log(location)
     const [
         createUserWithEmailAndPassword,
         passUser,
@@ -28,6 +32,7 @@ const SignUp = () => {
     if (loading || updating) {
         return <Loading />
     }
+    if(token) return navigate(from,{replace:true})
     const onSubmit = async (data) => {
         console.log(data)
 

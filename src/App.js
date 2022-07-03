@@ -37,7 +37,7 @@ function App() {
               <SearchResult />
             </RequireAuth>} />
             <Route path='roomDetails/:id' element={<RequireAuth><RoomDetails /></RequireAuth>} />
-            <Route path='payment' element={<Payment />}>
+            <Route path='payment' element={<RequireAuth><Payment /></RequireAuth>}>
               <Route index element={<ReviewHouse />} />
               <Route path='whosComing' element={<WhosComing />} />
               <Route path='confirmPayment' element={<ConfirmPayment />} />

@@ -32,7 +32,7 @@ const Login = () => {
         error,
     ] = useSignInWithEmailAndPassword(auth);
     const [logError]=useLog(error || setError)
-    if(token) navigate(from,{replace:true})
+    if(token) navigate(from,{replace:true},)
     if(loading) return <Loading/>
     const passReset=async()=>{
         await sendPasswordResetEmail(email)
@@ -109,7 +109,8 @@ const Login = () => {
                                     logError && <p className='text-center text-red-500 my-2'>{logError}</p>
                                 }
                                 <div className='mt-3'>
-                                    <p>Don't have an account ? <Link className='text-primary font-bold' to='/signup'>SignUp</Link></p>
+                                    <p>Don't have an account ? <Link
+                                    state={{from:location}} className='text-primary font-bold' to='/signup'>SignUp</Link></p>
                                 </div>
                                 <div class="divider">OR</div>
                                 <Social />
