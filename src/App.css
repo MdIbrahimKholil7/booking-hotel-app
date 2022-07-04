@@ -1,9 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Lobster&family=Montserrat:ital,wght@0,300;0,500;1,500&family=Oleo+Script&family=Oswald:wght@300;400&display=swap');
 
-.nav-border{
+.nav-border {
   border-bottom: 2px solid rgb(164, 157, 157);
 }
-.active-border::before{
+
+.active-border::before {
   content: '';
   position: absolute;
   top: 55px;
@@ -13,38 +14,113 @@
   left: 0;
   /* border-bottom: 2px solid red; */
 }
-.font{
+
+.font {
   font-family: 'Montserrat', sans-serif;
-line-height: 70px;
+  line-height: 70px;
 }
-.font-oleo{
+
+.font-oleo {
   font-family: 'Oleo Script', cursive;
 }
 
-.room-title::before{
+.room-title::before {
   content: '';
   position: absolute;
   width: 50%;
   height: 3px;
-  background:#1b2857fb;
+  background: #1b2857fb;
   top: 50%;
   left: -100px;
   padding: 0 10px;
 }
 
-.room-title::after{
+.room-title::after {
   content: '';
   position: absolute;
   width: 50%;
   height: 3px;
-  background:#1b2857fb;
+  background: #1b2857fb;
   top: 50%;
   right: -100px;
 }
 
-.sticky-bar{
+.sticky-bar {
   position: sticky !important;
   top: 61px;
   left: 0;
   height: 70vh;
+}
+
+/* paginate style  */
+.paginateContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 5rem;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.page-btn {
+  padding: 1rem;
+  margin: 0 1rem;
+}
+
+.previous {
+  color: #fff;
+  background-color: rgb(9, 177, 244);
+  padding: 1rem 1.6rem;
+  border-radius: .5rem;
+}
+
+.active-btn {
+  background: rgb(9, 177, 244);
+  color: #fff;
+  border-radius: .3rem;
+  /* padding: 1rem; */
+}
+
+.link-btn {
+  text-decoration: none;
+  color: #fff;
+}
+
+/* paginate media style  */
+
+
+@media screen and (max-width:518px) {
+  .paginateContainer {
+    display: flex;
+    justify-content: center;
+    margin-top: 5rem;
+    width: 100%;
+    flex-wrap: wrap;
+  }
+
+  .page-btn {
+    padding: .7rem;
+    margin: 0 .6rem;
+  }
+
+  .previous {
+    color: #fff;
+    background-color: rgb(9, 177, 244);
+    padding: .7rem 1.2rem;
+    border-radius: .5rem;
+  }
+
+  .active-btn {
+    background: rgb(9, 177, 244);
+    color: #fff;
+    border-radius: .3rem;
+    /* padding: 1rem; */
+  }
+
+  .link-btn {
+    text-decoration: none;
+    color: #fff;
+  }
+
+
+
 }

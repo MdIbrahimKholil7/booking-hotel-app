@@ -5,16 +5,16 @@ import { useNavigate } from 'react-router-dom';
 import { parseISO } from 'date-fns/esm';
 const SearchCard = ({ elem, location }) => {
 
-    const { desc, roomType, price, img, ratings,_id } = elem || {}
+    const { desc, roomType, price, img, ratings, _id } = elem || {}
     // formating date 
-    const startDate = format(parseISO(location.date[0].startDate), 'dd/MM/yy').split('/')
-    const endDate = format(parseISO(location.date[0].endDate), 'dd/MM/yy').split('/')
-    const result = Number(endDate[0]) - Number(startDate[0]) + 1
-    
-    const navigate=useNavigate()
+    const startDate = location && format(parseISO(location?.date[0]?.startDate), 'dd/MM/yy').split('/')
+    const endDate = location && format(parseISO(location?.date[0]?.endDate), 'dd/MM/yy').split('/')
+    const result = location && Number(endDate[0]) - Number(startDate[0]) + 1
+
+    const navigate = useNavigate()
     // handle navigate function 
-    const handleNavigate=(id)=>{
-        navigate(`/roomDetails/${id}`,{state:{location}})
+    const handleNavigate = (id) => {
+        navigate(`/roomDetails/${id}`, { state: { location } })
     }
     return (
         <div>
@@ -39,10 +39,12 @@ const SearchCard = ({ elem, location }) => {
 
                             <div>
                                 <h3 className='mb-1'><span className='font-bold md:text-xl text-[17px]'>${price}/</span>night</h3>
-                                <p className='text-[13px] text-gray-500'>${price * result} total</p>
+                                {
+                                    result && <p className='text-[13px] text-gray-500'>${price * result} total</p>
+                                }
                             </div>
                         </div>
-                        <button onClick={()=>handleNavigate(_id)} class="btn btn-primary">Book</button>
+                        <button onClick={() => handleNavigate(_id)} class="btn btn-primary">Book</button>
                     </div>
                 </div>
             </div>
@@ -67,7 +69,9 @@ const SearchCard = ({ elem, location }) => {
 
                             <div>
                                 <h3 className='mb-1'><span className='font-bold md:text-xl text-[17px]'>${price}/</span>night</h3>
-                                <p className='text-[13px] text-gray-500'>${price * result} total</p>
+                                {
+                                    result && <p className='text-[13px] text-gray-500'>${price * result} total</p>
+                                }
                             </div>
                         </div>
                         <button onClick={handleNavigate} class="btn btn-primary">Book</button>

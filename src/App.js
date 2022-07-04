@@ -13,6 +13,7 @@ import ConfirmPayment from './components/RoomDetails/Payment/ConfirmPayment';
 import Login from './components/Shared/Login/Login';
 import SignUp from './components/Shared/Login/SignUp';
 import RequireAuth from './components/Shared/RequireAuth';
+import AllRoom from './components/AllRoom/AllRoom';
 
 export const RoomInformation = React.createContext('fds')
 
@@ -32,7 +33,7 @@ function App() {
                 setRoomInformation={setRoomInformation}
               />
             </Suspense>} />
-
+              <Route path='allRoom' element={<AllRoom/>}/>
             <Route path='searchResult' element={<RequireAuth>
               <SearchResult />
             </RequireAuth>} />
