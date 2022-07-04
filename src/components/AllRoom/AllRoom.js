@@ -10,7 +10,7 @@ const AllRoom = () => {
     const [room, setRoom] = useState([])
     const [count, setCount] = useState(0)
     const [page, setPage] = useState(0)
-    const [size, setSize] = useState(3)
+    const [size, setSize] = useState(4)
 
 
     const { data, loading, refetch } = useQuery(['all-room'], () => fetcher(`getRoom/getRoomByPagination?page=${page}&size=${size}`))
@@ -18,7 +18,7 @@ const AllRoom = () => {
     useEffect(() => {
         (async () => {
             const { data } = await fetcher('getRoom/getRoomCount')
-            const length = Math.ceil(data.result / 3)
+            const length = Math.ceil(data.result / 4)
             console.log(data)
             setCount(length)
         })()
@@ -39,7 +39,7 @@ const AllRoom = () => {
         <div className='mt-20'>
 
             <div className='flex justify-center items-center'>
-                <div className=' lg:w-[70%] w-full mb-[70px] flex flex-col items-center '>
+                <div className=' lg:w-[90%] w-full mb-[70px] flex flex-col items-center '>
                     {
                         data?.data.map(elem => <SearchCard
                             elem={elem}
@@ -48,8 +48,8 @@ const AllRoom = () => {
                 </div>
             </div>
 
-            <div className='flex justify-center items-center mb-5 bg-base-300'>
-                <div className='w-[100%]  flex items-center justify-center'>
+            <div className='flex justify-end items-end mb-5'>
+                <div className='w-full   flex items-end justify-end '>
                     <ReactPaginate
                         previousLabel={'Prev'}
                         nextLabel={'Next'}

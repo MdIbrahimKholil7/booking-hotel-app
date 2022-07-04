@@ -3,6 +3,8 @@ import { AiFillStar } from 'react-icons/ai';
 import { format } from 'date-fns';
 import { useNavigate } from 'react-router-dom';
 import { parseISO } from 'date-fns/esm';
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
 const SearchCard = ({ elem, location }) => {
 
     const { desc, roomType, price, img, ratings, _id } = elem || {}
@@ -14,6 +16,15 @@ const SearchCard = ({ elem, location }) => {
     const navigate = useNavigate()
     // handle navigate function 
     const handleNavigate = (id) => {
+        if(!location){
+            return  Swal.fire({
+                position: 'top-center',
+                icon: 'error',
+                title: 'Please select city and date from homepage',
+                showConfirmButton: false,
+                timer: 2000
+            })
+        }
         navigate(`/roomDetails/${id}`, { state: { location } })
     }
     return (
