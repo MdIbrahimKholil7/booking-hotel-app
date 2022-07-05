@@ -1,8 +1,11 @@
 import { signOut } from 'firebase/auth';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link, NavLink } from 'react-router-dom';
 import auth from '../../firebase_init';
+import userImg from '../../assets/images/single-01.png'
+import fetcher from '../../api/fetcher';
+import UserDetails from './UserDetails';
 const Header = ({ children }) => {
     const [user] = useAuthState(auth)
     const menus = [
@@ -10,9 +13,21 @@ const Header = ({ children }) => {
         { name: 'All Room', to: '/allRoom' },
         { name: 'Contact Us', to: '/contactUs' },
     ]
+    const [userData, setUserData] = useState({})
+    const [open, setOpen] = useState(false)
+    const { img } = userData || {}
+    useEffect(() => {
+        (async () => {
+            const { data } = await fetcher(`user/user-data?email=${user.email}`)
+            setUserData(data)
+        })()
+    }, [])
 
+    const handleDetails=()=>{
+        setOpen(!open)
+    }
     return (
-        <div class="drawer drawer-end">
+        <div class="drawer drawer-end relative">
             <input id="my-drawer-3" type="checkbox" class="drawer-toggle" />
             <div
 
@@ -35,7 +50,13 @@ const Header = ({ children }) => {
                             }
                             <>
                                 {
-                                    user ? <button onClick={()=>signOut(auth)} className='font-[500] mr-2'>Log Out</button> : <li className='font-[500] mr-2'> <NavLink className={({ isActive }) => isActive ? 'flex items-center active-border' : ''} to='/login'>Login</NavLink></li>
+                                    user ? <button onClick={handleDetails} className='font-[500] mr-2'>
+                                        <span class="">
+                                            <span class=" rounded-full">
+                                                <img class="w-12 rounded-full" src={`${img ? img : userImg}`} alt="" />
+                                            </span>
+                                        </span>
+                                    </button> : <li className='font-[500] mr-2'> <NavLink className={({ isActive }) => isActive ? 'flex items-center active-border' : ''} to='/login'>Login</NavLink></li>
                                 }
                             </>
                         </ul>
@@ -60,6 +81,9 @@ const Header = ({ children }) => {
                 </ul>
 
             </div>
+            {
+                (open&&user) && <UserDetails/>
+            }
         </div>
     );
 };

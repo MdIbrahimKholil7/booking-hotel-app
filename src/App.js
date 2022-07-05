@@ -14,6 +14,10 @@ import Login from './components/Shared/Login/Login';
 import SignUp from './components/Shared/Login/SignUp';
 import RequireAuth from './components/Shared/RequireAuth';
 import AllRoom from './components/AllRoom/AllRoom';
+import Dashboard from './components/Dashboard/Dashboard';
+import MyProfile from './components/Dashboard/MyProfile';
+import YourBooking from './components/Dashboard/YourBooking';
+import AddReview from './components/Dashboard/AddReview';
 
 export const RoomInformation = React.createContext('fds')
 
@@ -33,7 +37,7 @@ function App() {
                 setRoomInformation={setRoomInformation}
               />
             </Suspense>} />
-              <Route path='allRoom' element={<AllRoom/>}/>
+            <Route path='allRoom' element={<AllRoom />} />
             <Route path='searchResult' element={<RequireAuth>
               <SearchResult />
             </RequireAuth>} />
@@ -45,6 +49,11 @@ function App() {
             </Route>
             <Route path='login' element={<Login />} />
             <Route path='signup' element={<SignUp />} />
+            <Route path='/dashboard' element={<Dashboard />}>
+              <Route index element={<MyProfile/>}/>
+              <Route path='yourBooking' element={<YourBooking/>}/>
+              <Route path='addReview' element={<AddReview/>}/>
+            </Route>
           </Routes>
           <Footer />
         </Header>
