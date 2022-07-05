@@ -18,7 +18,7 @@ const MyProfile = () => {
     }, [])
     return (
 
-        <div className='bg-[#19223c] text-white w-full h-full flex justify-center pt-9 px-4'>
+        <div className='bg-[#19223c] pb-20 text-white w-full h-full flex justify-center pt-9 px-4'>
             <div className='w-full'>
                 <div className='flex justify-between w-full items-center'>
                     <h1 className='text-2xl'>My Profile</h1>
@@ -27,8 +27,8 @@ const MyProfile = () => {
                     /> Edit</button>
                 </div>
                 <div className="w-full h-[3px] bg-[#fff] my-9"></div>
-                <div className='flex gap-12'>
-                    <div className='min-w-[170px] rounded-full bg-black h-48 p-7 flex justify-center items-center'>
+                <div className='flex gap-12 flex-col lg:flex-row justify-center'>
+                    <div className='w-[200px] mx-auto h-48 rounded-full bg-black p-7 flex justify-center items-center'>
                         <img className='w-40 rounded-full' src={`${img ? img : userImg}`} alt="userImg" />
                     </div>
 
