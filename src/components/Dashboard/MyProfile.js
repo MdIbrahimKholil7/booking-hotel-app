@@ -12,13 +12,14 @@ const MyProfile = () => {
     const { img, userName, _id,email,phone } = userData || {}
     useEffect(() => {
         (async () => {
-            const { data } = await fetcher(`user/user-data?email=${user.email}`)
+            const { data } = await fetcher(`user/user-data?email=${user?.email}`)
             setUserData(data)
         })()
-    }, [])
+    }, [user])
+    console.log(userData)
     return (
 
-        <div className='bg-[#19223c] pb-20 text-white w-full h-full flex justify-center pt-9 px-4'>
+        <div className='bg-white pb-20 text-black w-full h-full flex justify-center pt-9 px-4'>
             <div className='w-full'>
                 <div className='flex justify-between w-full items-center'>
                     <h1 className='text-2xl'>My Profile</h1>
@@ -26,9 +27,9 @@ const MyProfile = () => {
                         className='mr-1'
                     /> Edit</button>
                 </div>
-                <div className="w-full h-[3px] bg-[#fff] my-9"></div>
+                <div className="w-full h-[2px] bg-[#000] my-9"></div>
                 <div className='flex gap-12 flex-col lg:flex-row justify-center'>
-                    <div className='w-[200px] mx-auto h-48 rounded-full bg-black p-7 flex justify-center items-center'>
+                    <div className='w-[200px] mx-auto h-48 rounded-full bg-white p-7 flex justify-center items-center'>
                         <img className='w-40 rounded-full' src={`${img ? img : userImg}`} alt="userImg" />
                     </div>
 
