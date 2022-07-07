@@ -18,6 +18,7 @@ import Dashboard from './components/Dashboard/Dashboard';
 import MyProfile from './components/Dashboard/MyProfile';
 import YourBooking from './components/Dashboard/YourBooking';
 import AddReview from './components/Dashboard/AddReview';
+import EditProfile from './components/Dashboard/EditProfile';
 
 export const RoomInformation = React.createContext('fds')
 
@@ -53,6 +54,7 @@ function App() {
               <Route index element={<MyProfile/>}/>
               <Route path='yourBooking' element={<YourBooking/>}/>
               <Route path='addReview' element={<AddReview/>}/>
+              <Route path='editProfile' element={<EditProfile/>}/>
             </Route>
           </Routes>
           <Footer />

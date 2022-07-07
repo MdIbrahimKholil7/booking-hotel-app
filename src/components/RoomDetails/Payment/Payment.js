@@ -6,24 +6,25 @@ import { AiFillStar } from 'react-icons/ai';
 import { BiRightArrowAlt } from 'react-icons/bi';
 import { format, parseISO } from 'date-fns';
 import { ImCross } from 'react-icons/im';
+import useData from '../../hooks/useData';
 const Payment = () => {
 
     const result = JSON.parse(localStorage.getItem('time-zone'))
-    const [data, setData] = useState({})
-    const { desc, ratings, price, img } = data || {}
     const id = JSON.parse(localStorage.getItem('roomId'))
+    const [data]=useData(id)
+    const { desc, ratings, price, img } = data || {}
     const startDate = format(parseISO(result?.date[0].startDate), 'dd/MM/yy')
     const endDate = format(parseISO(result?.date[0].endDate), 'dd/MM/yy')
     const night = Number(endDate.split('/')[0]) - Number(startDate.split('/')[0])+1
     console.log(console.log(night+1))
     const serviceFee=21
     const cleaningFee=10
-    useEffect(() => {
+    /* useEffect(() => {
         (async () => {
             const { data } = await axios.get(`http://localhost:5000/getRoom/room/${id}`)
             setData(data)
         })()
-    }, [id])
+    }, [id]) */
     console.log(data)
     return (
         <div>

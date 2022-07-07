@@ -5,11 +5,14 @@ import { BiPencil } from 'react-icons/bi';
 import fetcher from '../../api/fetcher';
 import auth from '../../firebase_init';
 import userImg from '../../assets/images/single-01.png'
+import { useNavigate } from 'react-router-dom';
 const MyProfile = () => {
 
     const [user] = useAuthState(auth)
     const [userData, setUserData] = useState({})
     const { img, userName, _id,email,phone } = userData || {}
+    const navigate=useNavigate()
+
     useEffect(() => {
         (async () => {
             const { data } = await fetcher(`user/user-data?email=${user?.email}`)
@@ -23,7 +26,7 @@ const MyProfile = () => {
             <div className='w-full'>
                 <div className='flex justify-between w-full items-center'>
                     <h1 className='text-2xl'>My Profile</h1>
-                    <button className='flex items-center'><BiPencil
+                    <button onClick={()=>navigate('/dashboard/editProfile')} className='flex items-center'><BiPencil
                         className='mr-1'
                     /> Edit</button>
                 </div>

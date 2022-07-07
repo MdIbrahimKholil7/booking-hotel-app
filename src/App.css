@@ -122,5 +122,49 @@
   }
 }
 
+/* edit input design  */
+.edit-input{
+  border-bottom: 1.8px solid rgb(153, 148, 148);
+  background: transparent;
+}
+.edit-input:focus{
+  border-bottom: 1.8px solid rgb(153, 148, 148);
+}
+.edit-input:focus{
+  outline: none;
+}
+.edit-input::placeholder{
+  margin-bottom: 9px;
+}
 
-
+/* side bar li style */
+.ul{
+  box-shadow:  5px 5px 10px #d9d9d9,
+  -5px -5px 10px #e7e7e7;
+}
+.sidebar{
+  position: relative;
+  margin-left: 4px;
+  transition: .3s ease;
+}
+.sidebar::before{
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 10%;
+  height: 2px;
+  left: -4%;
+  background: #000;
+}
+.sidebar:hover::before{
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 17%;
+  height: 2px;
+  left: -10%;
+  background: #000;
+}
+.sidebar:hover{
+  margin-left: 7px;
+}

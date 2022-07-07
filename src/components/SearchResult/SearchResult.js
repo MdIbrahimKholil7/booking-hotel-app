@@ -8,7 +8,6 @@ import 'react-toastify/dist/ReactToastify.css';
 import SearchCard from './SearchCard';
 import axios from "axios";
 import Loading from '../Shared/Loading'
-import axiosPrivate from '../../api/axiosPrive';
 import { signOut } from 'firebase/auth';
 import auth from '../../firebase_init';
 
@@ -32,12 +31,6 @@ const SearchResult = () => {
 
 
   useEffect(() => {
-
-   /*  axios.get(`http://localhost:5000/getRoom/room?room=${city}`, {
-      authorization: `Bearer ${localStorage.getItem('hotelAccessToken')}`
-    })
-      .then(data => setSearchRoom(data.data)) */
-    
 
     fetch(`http://localhost:5000/getRoom/room?room=${city}`, {
       headers: {
