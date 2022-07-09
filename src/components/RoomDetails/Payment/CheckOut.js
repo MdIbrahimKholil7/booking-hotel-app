@@ -12,6 +12,7 @@ const CheckOut = ({ data }) => {
     const [user] = useAuthState(auth)
     const elements = useElements()
     const [cardError, setCardError] = useState('')
+    const [load, setLoad] = useState(false)
     const [success, setSuccess] = useState('')
     const [clientSecret, setClientSecret] = useState('')
     const startDate = format(parseISO(result?.date[0].startDate), 'dd/MM/yy')
@@ -19,8 +20,8 @@ const CheckOut = ({ data }) => {
     const night = Number(endDate.split('/')[0]) - Number(startDate.split('/')[0]) + 1
     const { price } = data || {}
     const roomDetails = data
-    const serviceFee=21
-    const cleaningFee=10
+    const serviceFee = 21
+    const cleaningFee = 10
     useEffect(() => {
         (async () => {
             /* const {data}=await axiosPrivate.post('http://localhost:5000/user/payment',{price})
@@ -40,7 +41,7 @@ const CheckOut = ({ data }) => {
     }, [price, data, night])
     const handleSubmit = async (e) => {
         e.preventDefault()
-
+        setLoad(true)
         if (!stripe || !elements) return
         const card = elements.getElement(CardElement)
         if (!card) return
@@ -66,9 +67,10 @@ const CheckOut = ({ data }) => {
         if (paymentError) {
             setSuccess('')
             setCardError(paymentError.message)
+            setLoad(false)
         } else {
             setCardError('')
-            setSuccess('Your payment is success')
+
             const details = {
                 transactionId: paymentIntent?.id,
                 roomBooked: true,
@@ -83,7 +85,11 @@ const CheckOut = ({ data }) => {
                 },
                 body: JSON.stringify(details)
             }).then(res => res.json())
-                .then(data => console.log(data))
+                .then(data => {
+                    setSuccess('Your payment is success')
+                    setLoad(false)
+                    console.log(data)
+                })
             console.log(paymentIntent)
             console.log('payment success')
             // console.log(data)
@@ -95,14 +101,17 @@ const CheckOut = ({ data }) => {
             <form onSubmit={handleSubmit}>
                 <CardElement />
                 {cardError && <p className='text-red-500 my-4'>{setCardError}</p>}
-                <button className='btn btn-primary mt-7 block mx-auto' type="submit" disabled={!stripe || !clientSecret || !elements}>
-                    Pay
-                </button>
+                <div className='text-center'>
+                    <button className={`btn mt-7 btn-primary mx-auto ${load ? 'loading' : ''}`} type="submit" disabled={!stripe || !clientSecret || !elements}>
+                        {load?'processing':'pay'}
+                    </button>
+                </div>
+                {/* <button class="btn loading mt-7  mx-auto">loading</button> */}
                 {
-                    success&& <p className='text-center mt-5 text-green-600'>{success}</p>
+                    success && <p className='text-center mt-5 text-green-600'>{success}</p>
                 }
                 {
-                     cardError&& <p className='text-center mt-5 text-red-500'>{cardError}</p>
+                    cardError && <p className='text-center mt-5 text-red-500'>{cardError}</p>
                 }
             </form>
         </div>
