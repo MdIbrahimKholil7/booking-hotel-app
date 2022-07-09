@@ -17,9 +17,9 @@ const UserDetails = () => {
             const { data } = await fetcher(`user/user-data?email=${user.email}`)
             setUserData(data)
         })()
-    }, [])
+    }, [user])
     return (
-        <div className='rounded-lg absolute top-16 right-4 bg-[#19223c] text-white text-center p-4'>
+        <div className='rounded-lg absolute top-16 right-4 bg-[#19223c] text-white text-center p-7'>
             <div>
                 <div>
                     <div class="avatar">
@@ -28,7 +28,7 @@ const UserDetails = () => {
                         </div>
                     </div>
                     <div className='mt-9'>
-                        <h2>{user?.displayName}</h2>
+                        <h2 className='text-2xl mb-2'>{user?.displayName}</h2>
                         <p>{user?.email}</p>
                         <div className="w-full  h-[3px] bg-white my-5"></div>
                         <div className='text-left'>

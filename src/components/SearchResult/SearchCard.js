@@ -7,7 +7,7 @@ import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
 const SearchCard = ({ elem, location }) => {
 
-    const { desc, roomType, price, img, ratings, _id } = elem || {}
+    const { desc, roomType, price, img, ratings, _id,booked } = elem || {}
     // formating date 
     const startDate = location && format(parseISO(location?.date[0]?.startDate), 'dd/MM/yy').split('/')
     const endDate = location && format(parseISO(location?.date[0]?.endDate), 'dd/MM/yy').split('/')
@@ -55,7 +55,7 @@ const SearchCard = ({ elem, location }) => {
                                 }
                             </div>
                         </div>
-                        <button onClick={() => handleNavigate(_id)} class="btn btn-primary">Book</button>
+                        <button onClick={() => handleNavigate(_id)} class="btn btn-primary" disabled={booked}>Book</button>
                     </div>
                 </div>
             </div>
@@ -85,7 +85,7 @@ const SearchCard = ({ elem, location }) => {
                                 }
                             </div>
                         </div>
-                        <button onClick={handleNavigate} class="btn btn-primary">Book</button>
+                        <button onClick={handleNavigate} class="btn btn-primary" disabled={booked}>Book</button>
                     </div>
                 </div>
             </div>
