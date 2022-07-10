@@ -7,6 +7,13 @@ const AddReview = () => {
         setRating(rating)
         console.log(rating)
     }
+    const handleSubmit = e => {
+        e.preventDefault()
+        if (e.target.review.value === '') {
+            return
+        }
+        
+    }
     return (
         <div>
             <h1 className='text-2xl text-center font font-bold my-9'>Add Your Review</h1>
@@ -21,7 +28,7 @@ const AddReview = () => {
                 </div>
                 <form>
                     <div className='w-full mt-5'>
-                        <textarea class="textarea textarea-bordered w-full min-h-[160px]" placeholder="Add Your Review"></textarea>
+                        <textarea class="textarea textarea-bordered w-full min-h-[160px]" name='review' placeholder="Add Your Review"></textarea>
                     </div>
                     <div className='text-center mt-3' >
                         <input className='btn btn-primary' type="submit" value='Submit' />

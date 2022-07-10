@@ -23,6 +23,7 @@ const EditProfile = () => {
                 profession: data?.profession,
                 phone: data?.phone
             })
+            console.log(data)
         })()
     }, [user])
 
