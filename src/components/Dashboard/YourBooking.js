@@ -90,10 +90,10 @@ const YourBooking = () => {
                     <h1 className='text-center text-3xl text-red-500 mt-20'>You don't have any booking</h1>
                 </div> :
                     <div>
-                        <div className='border-solid border-[1px] rounded-md p-5 border-gray-600 flex gap-9'>
+                        <div className='border-solid border-[1px] rounded-md p-5 border-gray-600 flex flex-col md:flex-row gap-9'>
                             <div class="avatar ">
-                                <div class="w-24 rounded-full p-2 ring ring-primary ring-offset-base-100 ring-offset-2">
-                                    <img src={`${userImg ? userImg : img}`} alt='userImage' />
+                                <div class="w-24 rounded-full  ring ring-primary ring-offset-base-100 ring-offset-2">
+                                    <img className='rounded-full' src={`${userImg ? userImg : img}`} alt='userImage' />
                                 </div>
 
                             </div>
@@ -115,7 +115,7 @@ const YourBooking = () => {
                                             <button className='btn bg-[#F8857D] text-white'>{booked && 'Booked'}</button>
                                         </div>
                                     </div>
-                                    <div className='flex gap-20 mt-5 mb-3'>
+                                    <div className='flex flex-col md:flex-row md:gap-20 gap-4 mt-5 mb-3'>
                                         <div >
                                             <p>Type</p>
                                             <div className='flex items-center gap-4 mt-2'>
@@ -163,7 +163,7 @@ const YourBooking = () => {
 
                             </div>
                         </div>
-                        <div className='px-12'>
+                        <div className='md:px-12 px-1'>
                             <Slider {...settings}>
                                 {
                                     rooms.map(room => <div
@@ -176,7 +176,7 @@ const YourBooking = () => {
 
 
                         </div>
-                        <div className='mt-16 flex justify-between items-center'>
+                        <div className='mt-16 flex flex-col md:flex-row justify-between items-center gap-9 md:gap-2'>
                             <div>
                                 <h1>You have booked {data?.data?.length} items</h1>
                             </div>
