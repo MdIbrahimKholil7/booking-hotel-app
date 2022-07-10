@@ -27,6 +27,7 @@ const YourBooking = () => {
     const [user] = useAuthState(auth)
     const [userData, setUserData] = useState({})
     const { userImg, _id } = userData || {}
+    const [index, setIndex] = useState(0)
     const { loading, data } = useQuery(['book-room', user], () => fetcher(`getRoom/book-room?email=${user?.email}`))
     const [thumbsSwiper, setThumbsSwiper] = useState(null);
     const custom = '../../assets/'
@@ -37,7 +38,7 @@ const YourBooking = () => {
             setUserData(data)
         })()
     }, [user])
-    const { roomType, price, ratings, city, booked, img } = data?.data[0] || {}
+    const { roomType, price, ratings, city, booked, img } = data?.data[index] || {}
     // console.log(data.data)
 
     const date = JSON.parse(localStorage.getItem('time-zone'))
@@ -63,6 +64,25 @@ const YourBooking = () => {
     if (loading) {
         return <Loading />
     }
+
+    const handleData = (name) => {
+        if (name === 'next') {
+            if(index >= data?.data.length-1){
+                setIndex(0)
+            }else{
+                setIndex(index+1)
+            }
+        }else{
+            if(index <=0){
+                setIndex(data?.data.length-1)
+            }else{
+                setIndex(index-1)
+            }
+        }
+    }
+
+
+
     return (
         <div className='px-5 py-9'>
             {
@@ -161,12 +181,11 @@ const YourBooking = () => {
                                 <h1>You have booked {data?.data?.length} items</h1>
                             </div>
                             <div>
-                                <button className='btn bg-[#F8857D] text-white mr-4'>Previous</button>
-                                <button className='btn bg-[#F8857D] text-white mr-4'>Next</button>
+                                <button onClick={() => handleData('prev')} className='btn bg-[#F8857D] text-white mr-4'>Previous</button>
+                                <button onClick={() => handleData('next')} className='btn bg-[#F8857D] text-white mr-4'>Next</button>
                             </div>
                         </div>
                     </div>
-
             }
         </div>
     );
