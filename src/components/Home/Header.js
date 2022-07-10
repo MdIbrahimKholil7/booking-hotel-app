@@ -18,7 +18,7 @@ const Header = ({ children }) => {
     const { img } = userData || {}
     useEffect(() => {
         (async () => {
-            const { data } = await fetcher(`user/user-data?email=${user.email}`)
+            const { data } = await fetcher(`user/user-data?email=${user?.email}`)
             setUserData(data)
         })()
     }, [])

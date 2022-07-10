@@ -10,24 +10,55 @@ import img from '../../assets/images/single-01.png'
 import { BiBed } from 'react-icons/bi';
 import { AiOutlineUser } from 'react-icons/ai';
 import { AiOutlineCalendar } from 'react-icons/ai';
+import { AiFillCheckCircle } from 'react-icons/ai';
 import { format, parseISO } from 'date-fns';
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+
+
+import room from '../../assets/images/room1.jpg'
+import room1 from '../../assets/images/room1.jpg'
+import room2 from '../../assets/images/room2.jpg'
+import room3 from '../../assets/images/room3.jpg'
+import room4 from '../../assets/images/room4.jpg'
+import room5 from '../../assets/images/room5.jpg'
 const YourBooking = () => {
     const [user] = useAuthState(auth)
     const [userData, setUserData] = useState({})
     const { userImg, _id } = userData || {}
     const { loading, data } = useQuery(['book-room', user], () => fetcher(`getRoom/book-room?email=${user?.email}`))
+    const [thumbsSwiper, setThumbsSwiper] = useState(null);
+    const custom = '../../assets/'
+
     useEffect(() => {
         (async () => {
             const { data } = await fetcher(`user/user-data?email=${user?.email}`)
             setUserData(data)
         })()
     }, [user])
-    const { roomType, price, ratings, city,booked } = data?.data[0] || {}
+    const { roomType, price, ratings, city, booked, img } = data?.data[0] || {}
     // console.log(data.data)
-    console.log(loading)
+
     const date = JSON.parse(localStorage.getItem('time-zone'))
     const bookingDate = format(parseISO(date?.date[0]?.startDate), `EEEE,MMMM dd yyy 'at' p`)
-    console.log(date)
+    const rooms = [img, room1, room2, room3, room4, room5]
+    const settings = {
+        customPaging: function (i) {
+            console.log(i)
+            return (
+                <div className='w-[100px] mr-4'>
+                    <img className=' mr-20 h-[20px] object-cover' src={rooms[i]} alt='' />
+                </div>
+            );
+        },
+        dots: true,
+        dotsClass: "slick-dots custom-indicator",
+        infinite: true,
+        speed: 500,
+        slidesToShow: 1,
+        slidesToScroll: 1
+    };
 
     if (loading) {
         return <Loading />
@@ -61,7 +92,7 @@ const YourBooking = () => {
                                             <p>#R-245T345</p>
                                         </div>
                                         <div>
-                                            <button className='btn bg-[#F8857D] text-white'>{booked&& 'Booked'}</button>
+                                            <button className='btn bg-[#F8857D] text-white'>{booked && 'Booked'}</button>
                                         </div>
                                     </div>
                                     <div className='flex gap-20 mt-5 mb-3'>
@@ -88,9 +119,54 @@ const YourBooking = () => {
                                         {bookingDate}
                                     </p>
                                 </div>
+                                <div className='mt-5'>
+                                    <h1>Facilities</h1>
+                                    <div className='flex gap-2 items-center mt-3 mb-3'>
+                                        <span ><AiFillCheckCircle
+                                            className='text-green-500 text-2xl '
+                                        /></span>
+                                        <p>Room Full AC</p>
+                                    </div>
+                                    <div className='flex gap-2 items-center mt-3 mb-3'>
+                                        <span ><AiFillCheckCircle
+                                            className='text-green-500 text-2xl '
+                                        /></span>
+                                        <p>Shower</p>
+                                    </div>
+                                    <div className='flex gap-2 items-center mt-3 mb-3'>
+                                        <span ><AiFillCheckCircle
+                                            className='text-green-500 text-2xl '
+                                        /></span>
+                                        <p>Bathup</p>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div className='px-12'>
+                            <Slider {...settings}>
+                                {
+                                    rooms.map(room => <div
+                                        className='mt-7'
+                                    >
+                                        <img className='w-full object-cover h-[75vh]' src={room} alt="" />
+                                    </div>)
+                                }
+                            </Slider>
+
+
+                        </div>
+                        <div className='mt-16 flex justify-between items-center'>
+                            <div>
+                                <h1>You have booked {data?.data?.length} items</h1>
+                            </div>
+                            <div>
+                                <button className='btn bg-[#F8857D] text-white mr-4'>Previous</button>
+                                <button className='btn bg-[#F8857D] text-white mr-4'>Next</button>
                             </div>
                         </div>
                     </div>
+
             }
         </div>
     );

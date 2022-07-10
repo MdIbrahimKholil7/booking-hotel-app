@@ -6,7 +6,7 @@ const SideBar = ({ children }) => {
         <div>
             <div class="drawer drawer-mobile">
                 <input id="my-drawer-2" type="checkbox" class="drawer-toggle" />
-                <div class="drawer-content  justify-center">
+                <div class="drawer-content justify-center overflow-hidden">
                     {/* <!-- Page content here --> */}
                     {children}
                     <label for="my-drawer-2" class="btn btn-primary drawer-button lg:hidden">Open drawer</label>
