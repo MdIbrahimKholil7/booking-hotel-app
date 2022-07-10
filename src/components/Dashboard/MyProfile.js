@@ -13,7 +13,7 @@ const MyProfile = () => {
     const [user] = useAuthState(auth)
     const [userData, setUserData] = useState({})
     const [imgUrl, setImgUrl] = useState('')
-    const [reload, setReload] = useState(true)
+    const [reload, setReload] = useState(false)
     const { img, userName, _id, email, phone, address, profession } = userData || {}
     const navigate = useNavigate()
     const {data,loading}=useQuery(['set-image',imgUrl],()=>{
@@ -33,6 +33,7 @@ const MyProfile = () => {
     }, [user,reload])
    
     const imageHandler = async (event) => {
+        setReload(true)
         const image = event.target.files[0]
         const url = `https://api.imgbb.com/1/upload?key=b0218fca63a2d42f3b150732dddf9450`
         const formData = new FormData()
@@ -46,7 +47,7 @@ const MyProfile = () => {
                 .then(data => {
 
                     setImgUrl(data?.data?.display_url)
-                    setReload(!reload)
+                    setReload(false)
                     console.log(data)
                 })
 
@@ -78,10 +79,12 @@ const MyProfile = () => {
                         </div>
                         <div className="form-control w-full">
                             <label htmlFor='img'
-                                className={`label w-[60%] mx-auto bg-[#1c1448] btn $ p-0 m-0 my-7 rounded-full text-white text-center flex justify-center items-center text-xs md:text-[12px] `}
+                                className={`label w-[60%] mx-auto bg-[#1c1448] btn $ p-0 m-0 my-7 rounded-full text-white text-center flex justify-center items-center text-xs md:text-[12px] ${reload ? 'loading':''}`}
 
                             >
-                                Upload Image
+                               {
+                                reload ? 'Uploading': 'Upload Image'
+                               }
                             </label>
                             <input
                                 type="file"
