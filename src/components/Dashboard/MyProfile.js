@@ -10,8 +10,8 @@ const MyProfile = () => {
 
     const [user] = useAuthState(auth)
     const [userData, setUserData] = useState({})
-    const { img, userName, _id,email,phone } = userData || {}
-    const navigate=useNavigate()
+    const { img, userName, _id, email, phone, address, profession } = userData || {}
+    const navigate = useNavigate()
 
     useEffect(() => {
         (async () => {
@@ -26,7 +26,7 @@ const MyProfile = () => {
             <div className='w-full'>
                 <div className='flex justify-between w-full items-center'>
                     <h1 className='text-2xl'>My Profile</h1>
-                    <button onClick={()=>navigate('/dashboard/editProfile')} className='flex items-center'><BiPencil
+                    <button onClick={() => navigate('/dashboard/editProfile')} className='flex items-center'><BiPencil
                         className='mr-1'
                     /> Edit</button>
                 </div>
@@ -39,20 +39,28 @@ const MyProfile = () => {
                     <div className=' w-full mt-7'>
                         <div className='text-[17px]'>
                             <div className='mb-4' >
-                                <h1 className='mb-1 text-[15px]'>Customer Id :</h1>
+                                <h1 className='mb-1 text-[13px]'>Customer Id :</h1>
                                 <p>User-{_id}</p>
                             </div>
-                           {(userName || user?.displayName )&& <div className='mb-4'>
-                                <h1 className='mb-1 text-[15px]'>Full Name</h1>
+                            {(userName || user?.displayName) && <div className='mb-4'>
+                                <h1 className='mb-1 text-[13px]'>Full Name</h1>
                                 <p>{userName ? userName : user?.displayName}</p>
                             </div>}
                             <div className='mb-4'>
-                                <h1 className='mb-1 text-[15px]'>Email Address</h1>
+                                <h1 className='mb-1 text-[13px]'>Email Address</h1>
                                 <p>{email}</p>
                             </div>
-                            {phone&&<div className='mb-4'>
-                                <h1 className='mb-1 text-[15px]'>Phone</h1>
-                                <p></p>
+                            {profession && <div className='mb-4'>
+                                <h1 className='mb-1 text-[13px]'>Profession</h1>
+                                <p>{profession}</p>
+                            </div>}
+                            {address && <div className='mb-4'>
+                                <h1 className='mb-1 text-[13px]'>Address</h1>
+                                <p>{address}</p>
+                            </div>}
+                            {phone && <div className='mb-4'>
+                                <h1 className='mb-1 text-[13px]'>Phone</h1>
+                                <p>{phone}</p>
                             </div>}
                         </div>
                     </div>
