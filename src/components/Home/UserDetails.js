@@ -12,6 +12,7 @@ const UserDetails = () => {
     const [user] = useAuthState(auth)
     const [userData, setUserData] = useState({})
     const { email, img } = userData || {}
+   
     useEffect(() => {
         (async () => {
             const { data } = await fetcher(`user/user-data?email=${user.email}`)

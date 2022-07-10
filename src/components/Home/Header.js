@@ -21,7 +21,7 @@ const Header = ({ children }) => {
             const { data } = await fetcher(`user/user-data?email=${user?.email}`)
             setUserData(data)
         })()
-    }, [])
+    }, [user])
 
     const handleDetails=()=>{
         setOpen(!open)
@@ -53,7 +53,7 @@ const Header = ({ children }) => {
                                     user ? <button onClick={handleDetails} className='font-[500] mr-2'>
                                         <span class="">
                                             <span class=" rounded-full">
-                                                <img class="w-12 rounded-full" src={`${img ? img : userImg}`} alt="" />
+                                                <img class="w-10 h-12 rounded-full" src={`${img ? img : userImg}`} alt="" />
                                             </span>
                                         </span>
                                     </button> : <li className='font-[500] mr-2'> <NavLink className={({ isActive }) => isActive ? 'flex items-center active-border' : ''} to='/login'>Login</NavLink></li>
