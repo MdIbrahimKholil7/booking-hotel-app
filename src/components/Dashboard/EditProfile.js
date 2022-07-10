@@ -6,33 +6,65 @@ import auth from '../../firebase_init';
 
 const EditProfile = () => {
     const [updateProfile, updating, uodateError] = useUpdateProfile(auth);
-    const [userData, setUserData] = useState({})
+    const [disabled, setDisabled] = useState(true)
+    const [userData, setUserData] = useState({
+        name: '',
+        address: '',
+        profession: '',
+        phone: ''
+    })
     const [user] = useAuthState(auth)
     useEffect(() => {
         (async () => {
             const { data } = await fetcher(`user/user-data?email=${user?.email}`)
-            setUserData(data)
+            setUserData({
+                name: user?.displayName,
+                address: data?.address,
+                profession: data?.profession,
+                phone: data?.phone
+            })
         })()
     }, [user])
-  
+
     console.log(userData)
+
+    const handleName = e => {
+        setUserData({ ...userData, name: e.target.value })
+        setDisabled(false)
+    }
+    const handlePhone = e => {
+        setUserData({ ...userData, phone: e.target.value })
+        setDisabled(false)
+    }
+    const handleAddress = e => {
+        console.log(e.target.value)
+        setUserData({ ...userData, address: e.target.value })
+        setDisabled(false)
+    }
+    const handleProfession = e => {
+        setUserData({ ...userData, profession: e.target.value })
+        setDisabled(false)
+    }
+
+
     const handleSubmit = async e => {
         e.preventDefault()
-        const name = e.target.name.value
+    /*     const name = e.target.name.value
         const address = e.target.address.value
         const profession = e.target.profession.value
         const phone = e.target.phone.value
 
-        setUserData({...userData,name,address,profession,phone})
-        await updateProfile({ displayName: name })
+        setUserData({ name, address, profession, phone }) */
+        await updateProfile({ displayName: userData?.name })
 
         const { data } = await axios.put('http://localhost:5000/user/put-userInformation', {
-            address,
-            profession,
-            phone,
+            address: userData?.address,
+            profession: userData?.profession,
+            phone: userData?.phone,
             email: user?.email
         })
 
+        console.log(userData)
         console.log(data)
     }
     return (
@@ -49,24 +81,24 @@ const EditProfile = () => {
                         <div className='flex flex-col md:flex-row md:gap-7 gap-2'>
                             <div className='w-full'>
                                 <label htmlFor="">Full Name</label>
-                                <input value={user?.displayName} className='block edit-input w-full mt-2' type="text" name='name' placeholder='Name' />
+                                <input onChange={handleName} value={userData?.name} className='block edit-input input w-full mt-2' type="text" name='name' placeholder='Name' />
                             </div>
                             <div className='w-full'>
                                 <label htmlFor="">Address</label>
-                                <input value={userData?.address} className='block edit-input w-full mt-2' type="text" name='address' placeholder='Address' />
+                                <input onChange={handleAddress} value={userData?.address} className='block input edit-input w-full mt-2' type="text" name='address' placeholder='Address' />
                             </div>
                         </div>
                         <div className='mt-3'>
                             <label>Profession</label>
-                            <input value={userData?.profession} className='block edit-input w-full mt-2' type="text" name='profession' placeholder='Profession' />
+                            <input onChange={handleProfession} value={userData?.profession} className='block edit-input input w-full mt-2' type="text" name='profession' placeholder='Profession' />
                         </div>
                         <div className='mt-3'>
                             <label>Phone</label>
-                            <input value={userData?.phone} className='block edit-input w-full mt-2' type="number" name='phone' placeholder='Phone' />
+                            <input onChange={handlePhone} value={userData?.phone} className='block edit-input input w-full mt-2' type="number" name='phone' placeholder='Phone' />
 
                         </div>
                         <div>
-                            <input className='btn btn-primary block mt-7 mx-auto' type="submit" value='Submit' />
+                            <input className='btn btn-primary input block mt-7 mx-auto' type="submit" disabled={disabled} value='Submit' />
                         </div>
                     </div>
                 </form>
