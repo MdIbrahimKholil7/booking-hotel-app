@@ -178,10 +178,11 @@
 
 
 .roomCard {
-  transform: scale(1.1);
+  /* transform: scale(1.1); */
   transition: .3s ease-in-out;
   opacity: 1;
-  height: 320px;
+  height: 330px;
+  border-radius: 20px;
 }
  
 

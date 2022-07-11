@@ -53,9 +53,9 @@ const PopularRooms = () => {
     };
     console.log(rooms)
     return (
-        <div >
-            <div>
-                <h1>Popular Rooms</h1>
+        <div className='mb-20'>
+            <div className='mt-20'>
+                <h1 className='text-2xl font-bold'>Popular Rooms</h1>
                 <div className='mt-20 justify-content-center '>
                     <Slider {...settings}>
                         
