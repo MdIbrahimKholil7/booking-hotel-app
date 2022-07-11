@@ -1,6 +1,7 @@
 import React from 'react';
 import { FaUserFriends } from 'react-icons/fa';
 import { IoMdKey } from 'react-icons/io';
+import Chart from './Chart';
 import PopularRooms from './PopularRooms';
 const AllStatus = () => {
     return (
@@ -31,6 +32,9 @@ const AllStatus = () => {
             </div>
             <div>
                 <PopularRooms />
+            </div>
+            <div>
+                <Chart/>
             </div>
         </div>
     );
