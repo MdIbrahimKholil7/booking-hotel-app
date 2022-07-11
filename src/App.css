@@ -123,31 +123,36 @@
 }
 
 /* edit input design  */
-.edit-input{
+.edit-input {
   border-bottom: 1.8px solid rgb(153, 148, 148);
   background: transparent;
 }
-.edit-input:focus{
+
+.edit-input:focus {
   border-bottom: 1.8px solid rgb(153, 148, 148);
 }
-.edit-input:focus{
+
+.edit-input:focus {
   outline: none;
 }
-.edit-input::placeholder{
+
+.edit-input::placeholder {
   margin-bottom: 9px;
 }
 
 /* side bar li style */
-.ul{
-  box-shadow:  5px 5px 10px #d9d9d9,
-  -5px -5px 10px #e7e7e7;
+.ul {
+  box-shadow: 5px 5px 10px #d9d9d9,
+    -5px -5px 10px #e7e7e7;
 }
-.sidebar{
+
+.sidebar {
   position: relative;
   margin-left: 4px;
   transition: .3s ease;
 }
-.sidebar::before{
+
+.sidebar::before {
   content: '';
   position: absolute;
   top: 50%;
@@ -156,7 +161,8 @@
   left: -4%;
   background: #000;
 }
-.sidebar:hover::before{
+
+.sidebar:hover::before {
   content: '';
   position: absolute;
   top: 50%;
@@ -165,10 +171,26 @@
   left: -10%;
   background: #000;
 }
-.sidebar:hover{
+
+.sidebar:hover {
   margin-left: 7px;
 }
 
+
+.roomCard {
+  transform: scale(1.1);
+  transition: .3s ease-in-out;
+  opacity: 1;
+  height: 320px;
+}
+ 
+
+
+.room {
+  opacity: .5;
+  transform: scale(0.9);
+  margin-top: 14px;
+}
 
 /* custom indecators  */
 /* .custom-indicator li img{
