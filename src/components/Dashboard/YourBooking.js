@@ -1,4 +1,3 @@
-import axios from 'axios';
 import React, { useState } from 'react';
 import { useEffect } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
@@ -6,7 +5,6 @@ import { useQuery } from 'react-query';
 import fetcher from '../../api/fetcher';
 import auth from '../../firebase_init';
 import Loading from '../Shared/Loading';
-import img from '../../assets/images/single-01.png'
 import { BiBed } from 'react-icons/bi';
 import { AiOutlineUser } from 'react-icons/ai';
 import { AiOutlineCalendar } from 'react-icons/ai';
@@ -15,9 +13,6 @@ import { format, parseISO } from 'date-fns';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-
-
-import room from '../../assets/images/room1.jpg'
 import room1 from '../../assets/images/room1.jpg'
 import room2 from '../../assets/images/room2.jpg'
 import room3 from '../../assets/images/room3.jpg'
