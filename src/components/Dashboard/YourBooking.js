@@ -26,11 +26,9 @@ import room5 from '../../assets/images/room5.jpg'
 const YourBooking = () => {
     const [user] = useAuthState(auth)
     const [userData, setUserData] = useState({})
-    const { userImg, _id } = userData || {}
+    const { img:userImg, _id } = userData || {}
     const [index, setIndex] = useState(0)
     const { loading, data } = useQuery(['book-room', user], () => fetcher(`getRoom/book-room?email=${user?.email}`))
-    const [thumbsSwiper, setThumbsSwiper] = useState(null);
-    const custom = '../../assets/'
 
     useEffect(() => {
         (async () => {
@@ -38,7 +36,7 @@ const YourBooking = () => {
             setUserData(data)
         })()
     }, [user])
-    const { roomType, price, ratings, city, booked, img } = data?.data[index] || {}
+    const { roomType, city, booked, img } = data?.data[index] || {}
     // console.log(data.data)
 
     const date = JSON.parse(localStorage.getItem('time-zone'))
@@ -93,7 +91,7 @@ const YourBooking = () => {
                         <div className='border-solid border-[1px] rounded-md p-5 border-gray-600 flex flex-col md:flex-row gap-9'>
                             <div class="avatar ">
                                 <div class="w-24 rounded-full  ring ring-primary ring-offset-base-100 ring-offset-2">
-                                    <img className='rounded-full' src={`${userImg ? userImg : img}`} alt='userImage' />
+                                    <img className='rounded-full object-cover' src={`${userImg ? userImg : img}`} alt='userImage' />
                                 </div>
 
                             </div>

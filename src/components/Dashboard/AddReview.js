@@ -1,18 +1,38 @@
-import React, { useState } from 'react';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import ReactStars from "react-rating-stars-component";
+import fetcher from '../../api/fetcher';
+import auth from '../../firebase_init';
 const AddReview = () => {
 
     const [rating, setRating] = useState(0)
+    const [user] = useAuthState(auth)
+    const [userData, setUserData] = useState({})
+    useEffect(() => {
+        (async () => {
+            const { data } = await fetcher(`user/user-data?email=${user?.email}`)
+            setUserData(data)
+        })()
+    }, [user])
+
     const handleStar = rating => {
         setRating(rating)
         console.log(rating)
     }
-    const handleSubmit = e => {
+    const handleSubmit = async e => {
         e.preventDefault()
         if (e.target.review.value === '') {
             return
         }
-        
+        const { data } = await axios.post(`http://localhost:5000/review/put-review`,{
+            review:e.target.review.value,
+            rating,
+            img:userData?.img,
+            accepted:false
+        })
+        console.log(data)
+        e.target.reset()
     }
     return (
         <div>
@@ -26,7 +46,7 @@ const AddReview = () => {
                         activeColor="#ffd700"
                     />
                 </div>
-                <form>
+                <form onSubmit={handleSubmit}>
                     <div className='w-full mt-5'>
                         <textarea class="textarea textarea-bordered w-full min-h-[160px]" name='review' placeholder="Add Your Review"></textarea>
                     </div>

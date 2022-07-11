@@ -18,7 +18,11 @@ const SideBar = ({ children }) => {
                         {/* <!-- Sidebar content here --> */}
                         <li className='sidebar'><Link to='/dashboard'>My Profile</Link></li>
                         <li className='sidebar'> <Link to='/dashboard/yourBooking'>Your Booking</Link></li>
-                        <li className='sidebar'><Link to='/dashboard/addReview'>Add Review</Link></li>
+                        <li className='sidebar'><Link to='/dashboard/review'>Add Review</Link></li>
+                        <li className='sidebar'><Link to='/dashboard/allStatus'>All Status</Link></li>
+                        <li className='sidebar'><Link to='/dashboard/guestDetails'>Guest Details</Link></li>
+                        <li className='sidebar'><Link to='/dashboard/reviewCheck'>Review Check</Link></li>
+                        <li className='sidebar'><Link to='/dashboard/AddRoom'>Add Room</Link></li>
                     </ul>
                 </div>
             </div>

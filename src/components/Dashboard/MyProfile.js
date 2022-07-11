@@ -8,12 +8,15 @@ import userImg from '../../assets/images/single-01.png'
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useQuery } from 'react-query';
+import Loading from '../Shared/Loading';
+import DashBoardLoading from '../Shared/DashBoardLoading';
 const MyProfile = () => {
 
     const [user] = useAuthState(auth)
     const [userData, setUserData] = useState({})
     const [imgUrl, setImgUrl] = useState('')
     const [reload, setReload] = useState(false)
+    const [load, setLoad] = useState(false)
     const { img, userName, _id, email, phone, address, profession } = userData || {}
     const navigate = useNavigate()
     const {data,loading}=useQuery(['set-image',imgUrl],()=>{
@@ -27,8 +30,10 @@ const MyProfile = () => {
     })
     useEffect(() => {
         (async () => {
+            setLoad(true)
             const { data } = await fetcher(`user/user-data?email=${user?.email}`)
             setUserData(data)
+            setLoad(false)
         })()
     }, [user,reload])
    
@@ -60,10 +65,12 @@ const MyProfile = () => {
 
     }
 
-
+    if(load){
+        return <DashBoardLoading/>
+    }
     console.log(userData)
     return (
-        <div className='bg-white pb-20 text-black w-full h-full flex justify-center pt-9 px-4'>
+        <div className='bg-white pb-20 text-black w-full h-full flex justify-center pt-9 px-4 z-[-10]'>
             <div className='w-full'>
                 <div className='flex justify-between w-full items-center'>
                     <h1 className='text-2xl'>My Profile</h1>
@@ -75,7 +82,7 @@ const MyProfile = () => {
                 <div className='flex gap-12 flex-col lg:flex-row justify-center'>
                     <div>
                         <div className='w-[170px] mx-auto h-44 rounded-full bg-black p-7 flex justify-center items-center'>
-                            <img className='w-32 rounded-full' src={`${img ? img : userImg}`} alt="userImg" />
+                            <img className='w-[170px] rounded-full' src={`${img ? img : userImg}`} alt="userImg" />
                         </div>
                         <div className="form-control w-full">
                             <label htmlFor='img'

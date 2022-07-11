@@ -19,6 +19,10 @@ import MyProfile from './components/Dashboard/MyProfile';
 import YourBooking from './components/Dashboard/YourBooking';
 import AddReview from './components/Dashboard/AddReview';
 import EditProfile from './components/Dashboard/EditProfile';
+import GuestDetails from './components/Dashboard/GuestDetails';
+import AddRoom from './components/Dashboard/AddRoom';
+import AllStatus from './components/Dashboard/AllStatus';
+import ReviewCheck from './components/Dashboard/ReviewCheck';
 
 export const RoomInformation = React.createContext('fds')
 
@@ -55,6 +59,10 @@ function App() {
               <Route path='yourBooking' element={<YourBooking/>}/>
               <Route path='addReview' element={<AddReview/>}/>
               <Route path='editProfile' element={<EditProfile/>}/>
+              <Route path='guestDetails' element={<GuestDetails/>}/>
+              <Route path='addRoom' element={<AddRoom/>}/>
+              <Route path='allStatus' element={<AllStatus/>}/>
+              <Route path='reviewCheck' element={<ReviewCheck/>}/>
             </Route>
           </Routes>
           <Footer />

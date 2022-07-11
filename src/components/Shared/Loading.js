@@ -1,5 +1,5 @@
 import React from 'react';
-import loading from '../../assets/images/original.gif'
+
 const Loading = () => {
     return (
         <div className='h-screen w-screen'>
