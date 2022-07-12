@@ -3,15 +3,19 @@ import React, { useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import userImg from '../../assets/images/single-01.png'
 import auth from '../../firebase_init';
-const GuestDetailsCard = ({ user:users }) => {
-    const {img,date,profession,active}=users || {}
+const GuestDetailsCard = ({ user:users,setOpenModal }) => {
+    const {img,date,profession,active,name,_id}=users || {}
+    console.log(users)
     const [open, setOpen] = useState(false)
     const dates=format(parseISO(date),'PP')
-    const [user]=useAuthState(auth)
     console.log(dates)
-    console.log(user)
+
     const handleDelete=()=>{
         setOpen(!open)
+    }
+
+    const openDeleteModal=()=>{
+        setOpenModal(users)
     }
     return (
         <div className='flex justify-center items-center'>
@@ -21,15 +25,19 @@ const GuestDetailsCard = ({ user:users }) => {
                 </figure>
                 <div class="card-body items-center text-center">
                     <div>
-                    <p>{user?.displayName}</p>
+                    <p>{name}</p>
                     </div>
-                    <div className='flex bg-[#bbb7b7]  justify-center w-7 h-7  items-center  rounded-full '>
+                    <div className='relative flex bg-[#bbb7b7]  justify-center w-7 h-7  items-center  rounded-full '>
                         <p onClick={handleDelete} className='  text-xl mb-3'>...</p>
-                        <div>
-                            <button className='bg-red-500 text-white px-3 py-1 rounded-md'>Delete</button>
-                        </div>
+                        {
+                            open && <div 
+                            className='absolute top-4 right-8'
+                            >
+                                <label onClick={openDeleteModal} for="deleteUser" className='btn bg-[#ee0b0b] text-white rounded-md px-3 py-1'>Delete</label>
+                            </div>
+                        }
                     </div>
-                   <div className='flex justify-between items-center'>
+                   <div className='flex justify-between items-center mt-10'>
                     <div>
                         <p className='text-[14px] mr-10'>Join at {dates}</p>
                     </div>

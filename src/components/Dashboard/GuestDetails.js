@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useEffect } from 'react';
 import fetcher from '../../api/fetcher';
+import DeleteModal from './DeleteModal';
 import GuestDetailsCard from './GuestDetailsCard';
 
 const GuestDetails = () => {
@@ -8,10 +9,13 @@ const GuestDetails = () => {
     const [users, setUser] = useState([])
     const [filterUser, setFilterUser] = useState([])
     const [btnStyle, setBtnStyle] = useState('all')
+    const [openModal, setOpenModal] = useState(null)
+    const [singleUser, setSingleUser] = useState({})
     useEffect(() => {
         (async () => {
             const { data } = await fetcher('/user/all-user')
             setUser(data)
+            console.log(data)
             setFilterUser(data)
         })()
     }, [])
@@ -50,10 +54,20 @@ const GuestDetails = () => {
                   filterUser.length ?  filterUser?.map(user => <GuestDetailsCard
                         key={user._id}
                         user={user}
+                        setOpenModal={setOpenModal}
                     />):
                     <div>
                         <h1 className='text-center mt-20 md:text-3xl text-xl font-bold text-red-500'>No Inactive User</h1>
                     </div>
+                }
+            </div>
+            <div>
+                {
+                    openModal && <DeleteModal
+                    setSingleUser={setSingleUser}
+                    setOpenModal={setOpenModal}
+                    openModal={openModal}
+                    />
                 }
             </div>
         </div>

@@ -4,13 +4,13 @@ import { useState } from "react"
 
 const useToken = (user,name) => {
     const [token, setToken] = useState('')
-    console.log(user?.displayName)
+    console.log(name)
     useEffect(() => {
         (async () => {
-            if (user?.email && name) {
+            if (user?.email) {
                 const { data } = await axios.put('http://localhost:5000/user/user-token',{
-                    name:user?.displayName,
-                    email:name
+                    name:name,
+                    email:user?.email
                 })
                 setToken(data.accessToken)
                 localStorage.setItem('hotelAccessToken',data.accessToken)
