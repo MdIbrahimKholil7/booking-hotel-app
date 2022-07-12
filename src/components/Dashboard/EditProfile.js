@@ -62,7 +62,8 @@ const EditProfile = () => {
             address: userData?.address,
             profession: userData?.profession,
             phone: userData?.phone,
-            email: user?.email
+            email: user?.email,
+            name:userData?.name
         })
 
         console.log(userData)

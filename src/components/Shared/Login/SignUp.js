@@ -13,9 +13,10 @@ import useToken from '../../hooks/useToken';
 
 const SignUp = () => {
     const [passError, setPassError] = useState('')
+    const [name,setName]=useState('')
     const { register, handleSubmit, watch, formState: { errors }, reset } = useForm();
     const [user] = useAuthState(auth)
-    const [token]=useToken(user)
+    const [token]=useToken(user,name)
     const location=useLocation()
     const navigate=useNavigate()
     const from=location?.state?.from.state?.from?.pathname || '/'
@@ -37,6 +38,7 @@ const SignUp = () => {
         console.log(data)
 
         const { name, email, password, conPass, } = data
+        setName(name)
         if (password !== conPass) {
             return setPassError('Password not match')
         }

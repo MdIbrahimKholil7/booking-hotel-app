@@ -24,7 +24,7 @@ const AllStatus = () => {
                             <p className='text-2xl'>195</p>
                             <h5>Rooms</h5>
                         </div>
-                        <div className='bg-[#efcac7]  flex justify-center items-center text-[#F8857D] rounded-md p text-3xl '>
+                        <div className='bg-[#efcac7] flex justify-center items-center text-[#F8857D] rounded-md p-3 text-3xl '>
                             <IoMdKey />
                         </div>
                     </div>
