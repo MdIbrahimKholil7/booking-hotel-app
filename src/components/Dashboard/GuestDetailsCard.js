@@ -5,10 +5,9 @@ import userImg from '../../assets/images/single-01.png'
 import auth from '../../firebase_init';
 const GuestDetailsCard = ({ user:users,setOpenModal }) => {
     const {img,date,profession,active,name,_id}=users || {}
-    console.log(users)
     const [open, setOpen] = useState(false)
     const dates=format(parseISO(date),'PP')
-    console.log(dates)
+
 
     const handleDelete=()=>{
         setOpen(!open)
