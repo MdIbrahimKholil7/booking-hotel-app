@@ -15,7 +15,7 @@ const AddReview = () => {
             setUserData(data)
         })()
     }, [user])
-
+    console.log(userData)
     const handleStar = rating => {
         setRating(rating)
         console.log(rating)
@@ -25,10 +25,11 @@ const AddReview = () => {
         if (e.target.review.value === '') {
             return
         }
-        const { data } = await axios.post(`http://localhost:5000/review/put-review`,{
+        const { data } = await axios.put(`http://localhost:5000/review/put-review`,{
             review:e.target.review.value,
             rating,
             img:userData?.img,
+            name:userData?.name,
             accepted:false
         })
         console.log(data)

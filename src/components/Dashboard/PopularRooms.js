@@ -6,17 +6,21 @@ import Slider from "react-slick";
 // import "slick-carousel/slick/slick.css";
 // import "slick-carousel/slick/slick-theme.css";
 import PopularRoomCard from './PopularRoomCard';
+import Loading from '../Shared/Loading';
 const PopularRooms = () => {
     const [rooms, setRooms] = useState([])
     const [indexs, setIndex] = useState(0)
+    const [loading, setLoading] = useState(false)
     useEffect(() => {
         (async () => {
+            setLoading(true)
             const { data } = await fetcher.get('/getRoom/all-rooms')
             setRooms(data)
+            setLoading(false)
             console.log(data)
         })()
     }, [])
-
+    if(loading) return <Loading/>
     const settings = {
         infinite: true,
         lazyLoad:true,

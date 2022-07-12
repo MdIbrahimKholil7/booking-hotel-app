@@ -11,25 +11,14 @@ const GuestDetails = () => {
     const [filterUser, setFilterUser] = useState([])
     const [btnStyle, setBtnStyle] = useState('all')
     const [openModal, setOpenModal] = useState(null)
-    const [singleUser, setSingleUser] = useState({})
- /*    useEffect(() => {
-        (async () => {
-            const { data } = await fetcher('/user/all-user')
-            setUser(data)
-            console.log(data)
-            setFilterUser(data)
-        })()
-    }, [])
- */
+
+ 
     const { loading, data, refetch } = useQuery(['all-user'], () => fetcher('/user/all-user'))
     useEffect(()=>{
         setUser(data?.data)
         setFilterUser(data?.data)
     },[data])
-    /* setUser(data)
-    console.log(data)
-    setFilterUser(data)
-    console.log(users) */
+   
     if(loading){
         return <Loading/>
     }
