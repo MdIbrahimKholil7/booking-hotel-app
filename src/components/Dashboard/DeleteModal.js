@@ -2,14 +2,14 @@ import axios from 'axios';
 import React from 'react';
 import fetcher from '../../api/fetcher';
 
-const DeleteModal = ({ setOpenModal, refetch, openModal }) => {
+const DeleteModal = ({ setOpenModal, refetch, openModal,url }) => {
     const { _id, name } = openModal || {}
     const handleNo = () => {
         setOpenModal(null)
     }
     // console.log(_id)
     const handleDelete = async (id) => {
-        fetch(`http://localhost:5000/user/delete-user`, {
+        fetch(url, {
             method: 'DELETE',
             headers: {
                 'content-type': 'application/json'
@@ -29,7 +29,7 @@ const DeleteModal = ({ setOpenModal, refetch, openModal }) => {
             <input type="checkbox" id="deleteUser" class="modal-toggle" />
             <div class="modal modal-bottom sm:modal-middle">
                 <div class="modal-box">
-                    <h3 class="font-bold text-lg">Are you sure you want to delete {name}</h3>
+                    <h3 class="font-bold text-lg">Are you sure you want to delete {name?name:''}</h3>
 
                     <div class="modal-action">
                         <label for="deleteUser" onClick={handleNo} class="btn">No</label>

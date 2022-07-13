@@ -75,7 +75,9 @@ const CheckOut = ({ data }) => {
                 transactionId: paymentIntent?.id,
                 roomBooked: true,
                 email: user?.email,
-                roomDetails
+                roomDetails,
+                pending:false,
+                name:user?.displayName
             }
 
             fetch(`http://localhost:5000/user/user-roomBooked`, {

@@ -23,6 +23,7 @@ import GuestDetails from './components/Dashboard/GuestDetails';
 import AddRoom from './components/Dashboard/AddRoom';
 import AllStatus from './components/Dashboard/AllStatus';
 import ReviewCheck from './components/Dashboard/ReviewCheck';
+import ManageAllBook from './components/Dashboard/ManageAllBook';
 
 export const RoomInformation = React.createContext('fds')
 
@@ -55,14 +56,15 @@ function App() {
             <Route path='login' element={<Login />} />
             <Route path='signup' element={<SignUp />} />
             <Route path='/dashboard' element={<Dashboard />}>
-              <Route index element={<MyProfile/>}/>
-              <Route path='yourBooking' element={<YourBooking/>}/>
-              <Route path='addReview' element={<AddReview/>}/>
-              <Route path='editProfile' element={<EditProfile/>}/>
-              <Route path='guestDetails' element={<GuestDetails/>}/>
-              <Route path='addRoom' element={<AddRoom/>}/>
-              <Route path='allStatus' element={<AllStatus/>}/>
-              <Route path='reviewCheck' element={<ReviewCheck/>}/>
+              <Route index element={<MyProfile />} />
+              <Route path='yourBooking' element={<YourBooking />} />
+              <Route path='addReview' element={<AddReview />} />
+              <Route path='editProfile' element={<EditProfile />} />
+              <Route path='guestDetails' element={<GuestDetails />} />
+              <Route path='addRoom' element={<AddRoom />} />
+              <Route path='allStatus' element={<AllStatus />} />
+              <Route path='manageBook' element={<ManageAllBook />} />
+              <Route path='reviewCheck' element={<ReviewCheck />} />
             </Route>
           </Routes>
           <Footer />

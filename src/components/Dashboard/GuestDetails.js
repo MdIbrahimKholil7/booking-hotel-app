@@ -11,7 +11,7 @@ const GuestDetails = () => {
     const [filterUser, setFilterUser] = useState([])
     const [btnStyle, setBtnStyle] = useState('all')
     const [openModal, setOpenModal] = useState(null)
-
+    const url = `http://localhost:5000/user/delete-user`
 
     const { loading, data, refetch } = useQuery(['all-user'], () => fetcher('/user/all-user'))
     useEffect(() => {
@@ -58,7 +58,8 @@ const GuestDetails = () => {
                     <button onClick={() => handleGuest('Active')} className={`mr-7 ${btnStyle === 'Active' ? 'px-3 py-2 shadow-xl rounded-md ' : ' '}`}>Active</button>
                     <button onClick={() => handleGuest('Inactive')} className={`mr-7 ${btnStyle === 'Inactive' ? 'px-3 py-2 shadow-xl rounded-md ' : ' '}`}>Inactive</button>
                 </div>
-                <div className='mt-16 md:mt-0'>
+                <div className='mt-16 md:mt-0 flex items-center gap-2'>
+                    <label htmlFor="">Search:</label>
                     <input onChange={handleName} type="text" placeholder="Search by name" class="input input-bordered w-full max-w-xs" />
                 </div>
             </div>
@@ -81,6 +82,7 @@ const GuestDetails = () => {
                         refetch={refetch}
                         setOpenModal={setOpenModal}
                         openModal={openModal}
+                        url={url}
                     />
                 }
             </div>

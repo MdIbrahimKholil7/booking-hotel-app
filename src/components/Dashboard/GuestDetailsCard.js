@@ -8,7 +8,6 @@ const GuestDetailsCard = ({ user:users,setOpenModal }) => {
     const [open, setOpen] = useState(false)
     const dates=format(parseISO(date),'PP')
 
-
     const handleDelete=()=>{
         setOpen(!open)
     }

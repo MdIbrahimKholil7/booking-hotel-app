@@ -65,6 +65,7 @@ const AddRoom = () => {
             }))
 
         console.log(details)
+        e.target.reset()
         /* const {data}=await axios.post('http://localhost:5000/getRoom/post-room')
         console.log(data) */
     }
@@ -84,7 +85,7 @@ const AddRoom = () => {
                         <div className='flex flex-col md:flex-row md:gap-7 gap-2'>
                             <div className='w-full'>
                                 <label htmlFor="">Ratings</label>
-                                <input className='block rounded-none edit-input input w-full mt-2' type="text" name='name' placeholder='Room Name' />
+                                <input className='block rounded-none edit-input input w-full mt-2' type="number" name='name' placeholder='Ratings' />
                             </div>
                             <div className='w-full'>
                                 <label htmlFor="">City</label>
