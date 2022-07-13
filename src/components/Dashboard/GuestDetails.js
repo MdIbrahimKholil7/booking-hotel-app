@@ -12,15 +12,25 @@ const GuestDetails = () => {
     const [btnStyle, setBtnStyle] = useState('all')
     const [openModal, setOpenModal] = useState(null)
 
- 
+
     const { loading, data, refetch } = useQuery(['all-user'], () => fetcher('/user/all-user'))
-    useEffect(()=>{
+    useEffect(() => {
         setUser(data?.data)
         setFilterUser(data?.data)
-    },[data])
-   
-    if(loading){
-        return <Loading/>
+    }, [data])
+
+    if (loading) {
+        return <Loading />
+    }
+
+    const handleName = (e) => {
+
+        const value = e.target.value
+        console.log(typeof value)
+        if (!e.target.value) return
+        const data = users.filter(user => (user?.name.toLowerCase().includes(value.toLowerCase())))
+        console.log(data)
+        setFilterUser(data)
     }
     const handleGuest = (status) => {
         if (status === 'all') {
@@ -42,11 +52,14 @@ const GuestDetails = () => {
 
     return (
         <div className='px-5 my-20'>
-            <div className='mt-9'>
+            <div className='mt-9 flex flex-col md:flex-row justify-between '>
                 <div>
                     <button onClick={() => handleGuest('all')} className={`mr-7 ${btnStyle === 'all' ? 'px-3 py-2 shadow-xl rounded-md ' : ''}`}>All Status</button>
                     <button onClick={() => handleGuest('Active')} className={`mr-7 ${btnStyle === 'Active' ? 'px-3 py-2 shadow-xl rounded-md ' : ' '}`}>Active</button>
                     <button onClick={() => handleGuest('Inactive')} className={`mr-7 ${btnStyle === 'Inactive' ? 'px-3 py-2 shadow-xl rounded-md ' : ' '}`}>Inactive</button>
+                </div>
+                <div className='mt-16 md:mt-0'>
+                    <input onChange={handleName} type="text" placeholder="Search by name" class="input input-bordered w-full max-w-xs" />
                 </div>
             </div>
             <div className='grid md:grid-cols-2 grid-cols-1 gap-7 justify-content-center mt-20'>

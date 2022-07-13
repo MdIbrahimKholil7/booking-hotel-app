@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useDropzone } from 'react-dropzone';
 import axios from 'axios'
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
 const AddRoom = () => {
     const [image, setImage] = useState([])
     const [imgUrl, setImgUrl] = useState('')
@@ -19,7 +21,6 @@ const AddRoom = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        const roomName = e.target.name.value
         const city = e.target.city.value
         const roomType = e.target.roomType.value
         const price = e.target.price.value
@@ -38,7 +39,7 @@ const AddRoom = () => {
                 .then(data => {
                     setImgUrl(data.data.display_url)
 
-                    
+
                 })
         }
         catch (error) {
@@ -55,6 +56,14 @@ const AddRoom = () => {
 
         // if (!roomName || !city || !roomType || !price || !desc) return
         const { data: details } = await axios.post('http://localhost:5000/getRoom/post-room', { room })
+            .then(res => Swal.fire({
+                position: 'top-center',
+                icon: 'success',
+                title: 'Room Add Success',
+                showConfirmButton: false,
+                timer: 2000
+            }))
+
         console.log(details)
         /* const {data}=await axios.post('http://localhost:5000/getRoom/post-room')
         console.log(data) */
@@ -74,7 +83,7 @@ const AddRoom = () => {
                     <div>
                         <div className='flex flex-col md:flex-row md:gap-7 gap-2'>
                             <div className='w-full'>
-                                <label htmlFor="">Room Name</label>
+                                <label htmlFor="">Ratings</label>
                                 <input className='block rounded-none edit-input input w-full mt-2' type="text" name='name' placeholder='Room Name' />
                             </div>
                             <div className='w-full'>
@@ -95,7 +104,7 @@ const AddRoom = () => {
                             <label>Room Desc</label>
                             <textarea class="textarea mt-4 min-h-[150px] w-full textarea-bordered" placeholder="Room desc" name='desc'></textarea>
                         </div>
-                        <div className="form-control border-solid border-[1px] border-gray-600 h-56 mt-4 flex justify-center items-center flex-col">
+                        <div className="form-control border-solid border-[1px] border-gray-600 rounded-md h-56 mt-4 flex justify-center items-center flex-col">
                             <div
                                 className=''
                                 {...getRootProps()}>
@@ -119,7 +128,7 @@ const AddRoom = () => {
                             </div>
                         </div>
                         <div>
-                            <input className='btn btn-primary input block rounded-none mt-7 mx-auto' type="submit" value='Submit' />
+                            <input className='btn btn-primary input block rounded-md mt-7 mx-auto' type="submit" value='Submit' />
                         </div>
                     </div>
                 </form>

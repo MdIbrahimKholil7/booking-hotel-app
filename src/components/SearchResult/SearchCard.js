@@ -7,17 +7,17 @@ import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
 const SearchCard = ({ elem, location }) => {
 
-    const { desc, roomType, price, img, ratings, _id,booked } = elem || {}
+    const { desc, roomType, price, img, ratings, _id, booked } = elem || {}
     // formating date 
     const startDate = location && format(parseISO(location?.date[0]?.startDate), 'dd/MM/yy').split('/')
     const endDate = location && format(parseISO(location?.date[0]?.endDate), 'dd/MM/yy').split('/')
     const result = location && Number(endDate[0]) - Number(startDate[0]) + 1
-
+    console.log(ratings ? ratings : 5)
     const navigate = useNavigate()
     // handle navigate function 
     const handleNavigate = (id) => {
-        if(!location){
-            return  Swal.fire({
+        if (!location) {
+            return Swal.fire({
                 position: 'top-center',
                 icon: 'error',
                 title: 'Please select city and date from homepage',
@@ -41,7 +41,7 @@ const SearchCard = ({ elem, location }) => {
                         <div className='flex justify-between items-center w-full'>
                             <div className='flex'>
                                 {
-                                    [...Array(Number(ratings))].map((star, index) => <AiFillStar
+                                    [...Array(Number(ratings ? ratings : 5))].map((star, index) => <AiFillStar
                                         key={index}
                                         className='md:w-5 w-3 text-yellow-600'
                                     />)
@@ -71,7 +71,7 @@ const SearchCard = ({ elem, location }) => {
                         <div className='flex justify-between items-center md:w-[70%] w-full'>
                             <div className='flex'>
                                 {
-                                    [...Array(Number(ratings))].map((star, index) => <AiFillStar
+                                    [...Array(Number(ratings ? ratings : 5))].map((star, index) => <AiFillStar
                                         key={index}
                                         className='md:w-5 w-3 text-yellow-600'
                                     />)
