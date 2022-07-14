@@ -24,6 +24,8 @@ import AddRoom from './components/Dashboard/AddRoom';
 import AllStatus from './components/Dashboard/AllStatus';
 import ReviewCheck from './components/Dashboard/ReviewCheck';
 import ManageAllBook from './components/Dashboard/ManageAllBook';
+import RequireAdmin from './components/Shared/RequreAdmin';
+import RequireUser from './components/Shared/RequireUser';
 
 export const RoomInformation = React.createContext('fds')
 
@@ -58,13 +60,26 @@ function App() {
             <Route path='/dashboard' element={<Dashboard />}>
               <Route index element={<MyProfile />} />
               <Route path='yourBooking' element={<YourBooking />} />
-              <Route path='addReview' element={<AddReview />} />
+              <Route path='addReview' element={<RequireUser>
+                <AddReview />
+              </RequireUser>} />
               <Route path='editProfile' element={<EditProfile />} />
-              <Route path='guestDetails' element={<GuestDetails />} />
-              <Route path='addRoom' element={<AddRoom />} />
-              <Route path='allStatus' element={<AllStatus />} />
-              <Route path='manageBook' element={<ManageAllBook />} />
-              <Route path='reviewCheck' element={<ReviewCheck />} />
+
+              <Route path='guestDetails' element={<RequireAdmin>
+                <GuestDetails />
+              </RequireAdmin>} />
+              <Route path='addRoom' element={<RequireAdmin>
+                <AddRoom />
+              </RequireAdmin>} />
+              <Route path='allStatus' element={<RequireAdmin>
+                <AllStatus />
+              </RequireAdmin>} />
+              <Route path='manageBook' element={<RequireAdmin>
+                <ManageAllBook />
+              </RequireAdmin>} />
+              <Route path='reviewCheck' element={<RequireAdmin>
+                <ReviewCheck />
+              </RequireAdmin>} />
             </Route>
           </Routes>
           <Footer />

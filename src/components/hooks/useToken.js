@@ -4,7 +4,6 @@ import { useState } from "react"
 
 const useToken = (user,name) => {
     const [token, setToken] = useState('')
-    console.log(name)
     useEffect(() => {
         (async () => {
             if (user?.email) {

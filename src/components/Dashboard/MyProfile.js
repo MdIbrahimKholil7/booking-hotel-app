@@ -128,7 +128,7 @@ const MyProfile = () => {
                             </div>}
                             {phone && <div className='mb-4'>
                                 <h1 className='mb-1 text-[13px]'>Phone</h1>
-                                <p>{phone}</p>
+                                <p>0{phone}</p>
                             </div>}
                         </div>
                     </div>

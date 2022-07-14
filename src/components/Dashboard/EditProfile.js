@@ -3,7 +3,8 @@ import React, { useEffect, useState } from 'react';
 import { useAuthState, useUpdateProfile } from 'react-firebase-hooks/auth';
 import fetcher from '../../api/fetcher';
 import auth from '../../firebase_init';
-
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
 const EditProfile = () => {
     const [updateProfile, updating, uodateError] = useUpdateProfile(auth);
     const [disabled, setDisabled] = useState(true)
@@ -50,12 +51,12 @@ const EditProfile = () => {
 
     const handleSubmit = async e => {
         e.preventDefault()
-    /*     const name = e.target.name.value
-        const address = e.target.address.value
-        const profession = e.target.profession.value
-        const phone = e.target.phone.value
-
-        setUserData({ name, address, profession, phone }) */
+        /*     const name = e.target.name.value
+            const address = e.target.address.value
+            const profession = e.target.profession.value
+            const phone = e.target.phone.value
+    
+            setUserData({ name, address, profession, phone }) */
         await updateProfile({ displayName: userData?.name })
 
         const { data } = await axios.put('http://localhost:5000/user/put-userInformation', {
@@ -63,11 +64,25 @@ const EditProfile = () => {
             profession: userData?.profession,
             phone: userData?.phone,
             email: user?.email,
-            name:userData?.name
+            name: userData?.name
+        }).then(res => {
+            Swal.fire({
+                position: 'top-center',
+                icon: 'success',
+                title: 'Profile Updated',
+                showConfirmButton: false,
+                timer: 2000
+            })
         })
 
         console.log(userData)
         console.log(data)
+        setUserData({
+            name: '',
+            address: '',
+            profession: '',
+            phone: ''
+        })
     }
     return (
         <div className='px-5'>
