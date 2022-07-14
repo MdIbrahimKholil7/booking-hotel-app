@@ -8,14 +8,14 @@ const ManageAllBook = () => {
     const [filterOrder, setFilterOrder] = useState([])
     const [openModal, setOpenModal] = useState(null)
     const [btnStyle, setBtnStyle] = useState('all')
-    const url = `http://localhost:5000/order/delete-order`
+    const url = `https://mighty-beyond-31065.herokuapp.com/order/delete-order`
     const { loading, data, refetch } = useQuery(['all-order'], () => fetcher('/order/all-order'))
     useEffect(() => {
         setOrder(data?.data)
         setFilterOrder(data?.data)
     }, [data])
     const handlePending = async (_id) => {
-        const { data } = await axios.patch('http://localhost:5000/order/update-order', { _id })
+        const { data } = await axios.patch('https://mighty-beyond-31065.herokuapp.com/order/update-order', { _id })
         console.log(data)
         refetch()
 

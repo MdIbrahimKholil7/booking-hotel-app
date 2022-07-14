@@ -59,7 +59,7 @@ const EditProfile = () => {
             setUserData({ name, address, profession, phone }) */
         await updateProfile({ displayName: userData?.name })
 
-        const { data } = await axios.put('http://localhost:5000/user/put-userInformation', {
+        const { data } = await axios.put('https://mighty-beyond-31065.herokuapp.com/user/put-userInformation', {
             address: userData?.address,
             profession: userData?.profession,
             phone: userData?.phone,

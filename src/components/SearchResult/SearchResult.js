@@ -32,7 +32,7 @@ const SearchResult = () => {
 
   useEffect(() => {
 
-    fetch(`http://localhost:5000/getRoom/room?room=${city}`, {
+    fetch(`https://mighty-beyond-31065.herokuapp.com/getRoom/room?room=${city}`, {
       headers: {
         'authorization': `Bearer ${localStorage.getItem('hotelAccessToken')}`
       }

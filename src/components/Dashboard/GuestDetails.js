@@ -11,7 +11,7 @@ const GuestDetails = () => {
     const [filterUser, setFilterUser] = useState([])
     const [btnStyle, setBtnStyle] = useState('all')
     const [openModal, setOpenModal] = useState(null)
-    const url = `http://localhost:5000/user/delete-user`
+    const url = `https://mighty-beyond-31065.herokuapp.com/user/delete-user`
 
     const { loading, data, refetch } = useQuery(['all-user'], () => fetcher('/user/all-user'))
     useEffect(() => {

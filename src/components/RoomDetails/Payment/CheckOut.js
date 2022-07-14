@@ -24,10 +24,10 @@ const CheckOut = ({ data }) => {
     const cleaningFee = 10
     useEffect(() => {
         (async () => {
-            /* const {data}=await axiosPrivate.post('http://localhost:5000/user/payment',{price})
+            /* const {data}=await axiosPrivate.post('https://mighty-beyond-31065.herokuapp.com/user/payment',{price})
             console.log(data) */
             const amount = price * night + serviceFee + cleaningFee
-            fetch('http://localhost:5000/user/payment', {
+            fetch('https://mighty-beyond-31065.herokuapp.com/user/payment', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json',
@@ -80,7 +80,7 @@ const CheckOut = ({ data }) => {
                 name:user?.displayName
             }
 
-            fetch(`http://localhost:5000/user/user-roomBooked`, {
+            fetch(`https://mighty-beyond-31065.herokuapp.com/user/user-roomBooked`, {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json'

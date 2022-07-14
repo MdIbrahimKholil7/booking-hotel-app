@@ -21,7 +21,7 @@ const Payment = () => {
     const cleaningFee=10
     /* useEffect(() => {
         (async () => {
-            const { data } = await axios.get(`http://localhost:5000/getRoom/room/${id}`)
+            const { data } = await axios.get(`https://mighty-beyond-31065.herokuapp.com/getRoom/room/${id}`)
             setData(data)
         })()
     }, [id]) */

@@ -7,7 +7,7 @@ const useToken = (user,name) => {
     useEffect(() => {
         (async () => {
             if (user?.email) {
-                const { data } = await axios.put('http://localhost:5000/user/user-token',{
+                const { data } = await axios.put('https://mighty-beyond-31065.herokuapp.com/user/user-token',{
                     name:name,
                     email:user?.email
                 })

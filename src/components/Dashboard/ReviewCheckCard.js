@@ -10,7 +10,7 @@ const ReviewCheckCard = ({ review, refetch, setOpenModal }) => {
     const [user] = useAuthState(auth)
 
     const handleReview = async (id) => {
-        const { data } = await axios.patch(`http://localhost:5000/review/update-review`, { id })
+        const { data } = await axios.patch(`https://mighty-beyond-31065.herokuapp.com/review/update-review`, { id })
         console.log(data)
         refetch()
     }

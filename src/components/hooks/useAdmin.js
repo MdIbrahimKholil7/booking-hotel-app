@@ -9,7 +9,7 @@ const useAdmin = (user) => {
         if (user?.email) {
             (async () => {
               
-                const { data } = await axios.get(`http://localhost:5000/user/get-admin?email=${user?.email}`)
+                const { data } = await axios.get(`https://mighty-beyond-31065.herokuapp.com/user/get-admin?email=${user?.email}`)
                
                 console.log(data[0].admin)
                 setAdmin(data[0].admin)
