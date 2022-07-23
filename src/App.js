@@ -4,7 +4,7 @@ import './App.css';
 import Header from './components/Home/Header';
 import Footer from './components/Shared/Footer';
 import SearchResult from './components/SearchResult/SearchResult';
-import loading from '../src/assets/images/loading.gif'
+import loading from '../src/assets/images/loading-1.gif'
 import RoomDetails from './components/RoomDetails/RoomDetails';
 import Payment from './components/RoomDetails/Payment/Payment';
 import ReviewHouse from './components/RoomDetails/Payment/ReviewHouse';
