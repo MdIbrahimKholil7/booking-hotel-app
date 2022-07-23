@@ -26,6 +26,7 @@ import ReviewCheck from './components/Dashboard/ReviewCheck';
 import ManageAllBook from './components/Dashboard/ManageAllBook';
 import RequireAdmin from './components/Shared/RequreAdmin';
 import RequireUser from './components/Shared/RequireUser';
+import Contact from './components/Contact/Contact';
 
 export const RoomInformation = React.createContext('fds')
 
@@ -45,6 +46,7 @@ function App() {
                 setRoomInformation={setRoomInformation}
               />
             </Suspense>} />
+            <Route path='/contactUs' element={<Contact/>}/>
             <Route path='allRoom' element={<AllRoom />} />
             <Route path='searchResult' element={<RequireAuth>
               <SearchResult />
