@@ -5,6 +5,7 @@ import fetcher from '../../api/fetcher';
 import DeleteModal from './DeleteModal';
 import GuestDetailsCard from './GuestDetailsCard';
 import Loading from '.././Shared/Loading'
+import { motion } from "framer-motion"
 const GuestDetails = () => {
 
     const [users, setUser] = useState([])
@@ -63,19 +64,27 @@ const GuestDetails = () => {
                     <input onChange={handleName} type="text" placeholder="Search by name" class="input input-bordered w-full max-w-xs" />
                 </div>
             </div>
-            <div className='grid md:grid-cols-2 grid-cols-1 gap-7 justify-content-center mt-20'>
+            <motion.div
+                layout 
+                className='grid md:grid-cols-2 grid-cols-1 gap-7 justify-content-center mt-20'>
 
-                {
-                    filterUser?.length ? filterUser?.map(user => <GuestDetailsCard
-                        key={user._id}
-                        user={user}
-                        setOpenModal={setOpenModal}
-                    />) :
-                        <div>
-                            <h1 className='text-center mt-20 md:text-3xl text-xl font-bold text-red-500'>No Inactive User</h1>
-                        </div>
-                }
-            </div>
+               
+                    {
+                        filterUser?.length ? filterUser?.map(user => <div
+                          
+                        >
+                            <GuestDetailsCard
+                                key={user._id}
+                                user={user}
+                                setOpenModal={setOpenModal}
+                            />
+                        </div>) :
+                            <div>
+                                <h1 className='text-center mt-20 md:text-3xl text-xl font-bold text-red-500'>No Inactive User</h1>
+                            </div>
+                    }
+               
+            </motion.div>
             <div>
                 {
                     openModal && <DeleteModal
