@@ -198,3 +198,7 @@
   width: 100px !important;
   height: 50px;
 } */
+.gradient {
+  background-image: linear-gradient(to right top, #183c8f, #5455a9, #63a4bd84);
+  color: white;
+}

@@ -4,6 +4,7 @@ const Banner = React.lazy(() => import('./Banner'))
 const Rooms = React.lazy(() => import('./Rooms'))
 const Details = React.lazy(() => import('./Details'))
 const Description = React.lazy(() => import('./Description'))
+const Business = React.lazy(() => import('./Business'))
 
 const Home = ({setRoomInformation}) => {
     return (
@@ -15,6 +16,7 @@ const Home = ({setRoomInformation}) => {
                 />
                 <Description />
                 <Rooms />
+                <Business/>
             </Suspense>
         </div>
     );

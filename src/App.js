@@ -33,13 +33,13 @@ export const RoomInformation = React.createContext('fds')
 function App() {
   const [roomInformation, setRoomInformation] = useState({})
   const Home = React.lazy(() => import('../src/components/Home/Home'))
-  console.log(roomInformation)
   return (
     <div className="App max-w-[1380px] mx-auto">
       <RoomInformation.Provider value={roomInformation}>
         <Header>
           <Routes>
-            <Route path='/' element={<Suspense
+            <Route path='/' element={
+            <Suspense
               fallback={<div><img className='w-full h-screen' src={loading} alt="loading" /></div>}
             >
               <Home
