@@ -13,9 +13,9 @@ const Business = () => {
                         className='text-3xl text-center'
                     />
 
-                    <div className="stat-title">Countries</div>
+                    <div className="stat-title">Total Room</div>
 
-                    <CountUp start={focus ? 0 : null} end={20} duration={3}>
+                    <CountUp start={focus ? 0 : null} end={200} duration={3}>
                         {({ countUpRef }) => (
                             <VisibilitySensor onChange={isVisible => {
                                 if (isVisible) {
@@ -23,7 +23,7 @@ const Business = () => {
                                 }
                             }}>
                                 <div>
-                                    <span className="stat-value" ref={countUpRef} /><span className="stat-value">K</span>
+                                    <span className="stat-value" ref={countUpRef} /><span className="stat-value">+</span>
                                    
                                 </div>
                             </VisibilitySensor>
@@ -37,8 +37,8 @@ const Business = () => {
                     < FaCompass
                         className='text-3xl text-center'
                     />
-                    <div className="stat-title">Order Complete</div>
-                    <CountUp start={focus ? 0 : null} end={4200} decimal={1} duration={3}>
+                    <div className="stat-title">Happy Clients</div>
+                    <CountUp start={focus ? 0 : null} end={5050} decimal={1} duration={3}>
                         {({ countUpRef }) => (
                             <VisibilitySensor onChange={isVisible => {
                                 if (isVisible) {
@@ -60,8 +60,8 @@ const Business = () => {
                     < FaUserFriends
                         className='text-3xl text-center'
                     />
-                    <div className="stat-title">Happy Client</div>
-                    <CountUp start={focus ? 0 : null} end={1000} duration={3}>
+                    <div className="stat-title">Total Branches</div>
+                    <CountUp start={focus ? 0 : null} end={199} duration={3}>
                         {({ countUpRef }) => (
                             <VisibilitySensor onChange={isVisible => {
                                 if (isVisible) {
@@ -82,8 +82,8 @@ const Business = () => {
                     < FaRegBookmark
                         className='text-3xl text-center'
                     />
-                    <div className="stat-title">Feedbacks</div>
-                    <CountUp start={focus ? 0 : null} end={3000} duration={3}>
+                    <div className="stat-title">Days Worked</div>
+                    <CountUp start={focus ? 0 : null} end={2025} duration={3}>
                         {({ countUpRef }) => (
                             <VisibilitySensor onChange={isVisible => {
                                 if (isVisible) {

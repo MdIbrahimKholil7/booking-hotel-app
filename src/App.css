@@ -45,6 +45,27 @@
   right: -100px;
 }
 
+.room-title1::before {
+  content: '';
+  position: absolute;
+  width: 40%;
+  height: 3px;
+  background: #1b2857fb;
+  top: 50%;
+  left: -185px;
+  padding: 0 10px;
+}
+
+.room-title1::after {
+  content: '';
+  position: absolute;
+  width: 40%;
+  height: 3px;
+  background: #1b2857fb;
+  top: 50%;
+  right: -185px;
+}
+
 .sticky-bar {
   position: sticky !important;
   top: 61px;
