@@ -52,12 +52,12 @@ const Review = () => {
     };
 
     return (
-        <div className='mt-20 mb-[120px] py-[60px] '>
+        <div className='mt-20 mb-[120px] py-[60px] overflow-x-hidden'>
             <div>
                 <div className='text-center'>
-                    <h1 className='text-4xl font-oleo text-center '><span className='relative room-title1 ' >What Our Customer Say's</span></h1>
+                    <h1 className='text-4xl font-oleo text-center '><span className='relative room-title1 ' >What Our Customer's Say</span></h1>
                 </div>
-                <div className='mt-20'>
+                <div className='mt-[160px]'>
                     <div>
                         <Slider {...settings}>
                             {

@@ -9,7 +9,7 @@ const Business = React.lazy(() => import('./Business'))
 
 const Home = ({ setRoomInformation }) => {
     return (
-        <div>
+        <div className=''>
             <Suspense fallback={<div><img className='w-full h-screen' src={loading} alt="loading" /></div>}>
                 <Banner />
                 <Details

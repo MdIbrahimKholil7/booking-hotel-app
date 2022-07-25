@@ -2,7 +2,7 @@ import React from 'react';
 
 const ReviewCard = ({ review, index, num }) => {
     console.log(review)
-    const { name, review: reviews, img, rating } = review || {}
+    const { name, review: reviews, img, rating, } = review || {}
     
     return (
         <div>
@@ -15,8 +15,8 @@ const ReviewCard = ({ review, index, num }) => {
                             <img className='h-[170px] mx-auto w-[170px] rounded-full object-cover ' src={img} alt="Shoes" />
                     
                         <div class="card-body items-center text-center">
-                            <h2 class="card-title">Shoes!</h2>
-                            <p>{name}</p>
+                           
+                            <p className='font-bold text-[25px]'>{name}</p>
                             <div class="card-actions">
                                 <p>{reviews.slice(0,90)}</p>
                             </div>
