@@ -206,19 +206,27 @@
   border-radius: 20px;
 }
  
-
-
 .room {
   opacity: .5;
   transform: scale(0.9);
   margin-top: 14px;
 }
 
-/* custom indecators  */
-/* .custom-indicator li img{
-  width: 100px !important;
-  height: 50px;
-} */
+.reviewCard {
+  transform: scale(1.1);
+  transition: .3s ease-in-out;
+  opacity: 1;
+  /* height: 330px; */
+  border-radius: 20px;
+}
+ 
+.review {
+  opacity: .5;
+  transform: scale(0.7);
+  /* margin-top: 14px; */
+}
+
+
 .gradient {
   background-image: linear-gradient(to right top, #183c8f, #5455a9, #63a4bd84);
   color: white;

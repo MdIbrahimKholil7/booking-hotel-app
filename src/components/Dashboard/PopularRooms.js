@@ -2,11 +2,9 @@ import React, { useState } from 'react';
 import { useEffect } from 'react';
 import fetcher from '../../api/fetcher';
 import Slider from "react-slick";
-// // Import css files
-// import "slick-carousel/slick/slick.css";
-// import "slick-carousel/slick/slick-theme.css";
 import PopularRoomCard from './PopularRoomCard';
 import Loading from '../Shared/Loading';
+
 const PopularRooms = () => {
     const [rooms, setRooms] = useState([])
     const [indexs, setIndex] = useState(0)
@@ -55,7 +53,6 @@ const PopularRooms = () => {
         },
     ]
     };
-    console.log(rooms)
     return (
         <div className='mb-20'>
             <div className='mt-20'>
