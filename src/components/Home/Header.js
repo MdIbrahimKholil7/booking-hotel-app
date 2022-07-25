@@ -1,7 +1,7 @@
 import { signOut } from 'firebase/auth';
 import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 import auth from '../../firebase_init';
 import userImg from '../../assets/images/single-01.png'
 import fetcher from '../../api/fetcher';
@@ -22,8 +22,9 @@ const Header = ({ children }) => {
             setUserData(data)
         })()
     }, [user])
+    const location = useLocation()
 
-    const handleDetails=()=>{
+    const handleDetails = () => {
         setOpen(!open)
     }
     return (
@@ -35,6 +36,11 @@ const Header = ({ children }) => {
                 {/* <!-- Navbar --> */}
                 {/* bg-[#2623a2af] */}
                 <div class="w-full navbar p-0 nav-border bg-white z-[999] sticky top-0 left-0">
+                    <div>
+                        {
+                            location.pathname.includes('dashboard') && <label for="my-drawer-2" class="pl-2 block bg-white drawer-button lg:hidden"> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block w-6 h-6 stroke-current"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg></label>
+                        }
+                    </div>
                     <div class="flex-1 px-2 text-3xl font-bold mx-2">Villena</div>
                     <div class="flex-none hidden lg:block">
                         <ul class="menu menu-horizontal gap-5 text-black">
@@ -75,14 +81,30 @@ const Header = ({ children }) => {
                 <label for="my-drawer-3" class="drawer-overlay"></label>
                 <ul class="menu p-4 overflow-y-auto w-80 bg-base-100">
                     {/* <!-- Sidebar content here --> */}
-                    <li><a>Sidebar Item 1</a></li>
-                    <li><a>Sidebar Item 2</a></li>
+                    {
+                        menus.map(({ name, to }, index) => <li
+                            key={index}
+                            className='relative font-[500]'
+                        >
+                            <NavLink className={({ isActive }) => isActive ? 'active-border' : ''} to={to}>{name}</NavLink>
+                        </li>)
 
+                    }
+                    <>
+                        {
+                            user ? <button onClick={handleDetails} className='font-[500] mr-2'>
+                                <span class="">
+                                    <span class=" rounded-full">
+                                        <img class="w-10 h-12 rounded-full" src={`${img ? img : userImg}`} alt="" />
+                                    </span>
+                                </span>
+                            </button> : <li className='font-[500] mr-2'> <NavLink className={({ isActive }) => isActive ? 'flex items-center active-border' : ''} to='/login'>Login</NavLink></li>
+                        }
+                    </>
                 </ul>
-
             </div>
             {
-                (open&&user) && <UserDetails/>
+                (open && user) && <UserDetails />
             }
         </div>
     );

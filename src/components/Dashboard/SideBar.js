@@ -15,11 +15,11 @@ const SideBar = ({ children }) => {
                 <div class="drawer-content justify-center overflow-hidden">
                     {/* <!-- Page content here --> */}
                     {children}
-                    <label for="my-drawer-2" class="btn btn-primary drawer-button lg:hidden">Open drawer</label>
+                    
                 </div>
                 <div class="drawer-side ul" >
                     <label for="my-drawer-2" class="drawer-overlay"></label>
-                    <ul class="menu  p-4 overflow-y-auto w-52 text-base-content ">
+                    <ul class="menu md:bg-white bg-slate-500 p-4 overflow-y-auto w-52 text-base-content ">
                         {/* <!-- Sidebar content here --> */}
                         <li className='sidebar'><Link to='/dashboard'>My Profile</Link></li>
                         {
