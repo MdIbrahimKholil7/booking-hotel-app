@@ -3,7 +3,7 @@ import React from 'react';
 const RoomsCard = ({ room }) => {
     const { roomType, city, desc, img, price } = room || {}
     return (
-        <div>
+        <div className='flex justify-center items-center'>
             <div class="card max-w-lg bg-base-100 shadow-xl">
                 <img className='h-[300px] w-full' src={img} alt={roomType} />
                 <div class="card-body">
