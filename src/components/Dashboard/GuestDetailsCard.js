@@ -1,7 +1,7 @@
 import { format, parseISO } from 'date-fns';
 import React, { useState } from 'react';
 import userImg from '../../assets/images/single-01.png'
-import { motion } from "framer-motion"
+// import { motion } from "framer-motion"
 const GuestDetailsCard = ({ user: users, setOpenModal }) => {
     const { img, date, profession, active, name, _id } = users || {}
     const [open, setOpen] = useState(false)
@@ -16,7 +16,7 @@ const GuestDetailsCard = ({ user: users, setOpenModal }) => {
     }
     return (
        
-            <motion.div layout className='flex justify-center items-center'>
+            <div layout className='flex justify-center items-center'>
                 <div class="card max-w-[320px] bg-base-100 shadow-xl">
                     <figure class="px-5 pt-10">
                         <img src={img ? img : userImg} alt="user" class="rounded-full w-[130px] h-[130px] object-cover" />
@@ -43,7 +43,7 @@ const GuestDetailsCard = ({ user: users, setOpenModal }) => {
                         </div>
                     </div>
                 </div>
-            </motion.div>
+            </div>
         
     );
 };

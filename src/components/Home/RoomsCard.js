@@ -4,8 +4,8 @@ const RoomsCard = ({ room }) => {
     const { roomType, city, desc, img, price } = room || {}
     return (
         <div className='flex justify-center items-center'>
-            <div class="card max-w-lg bg-base-100 shadow-xl">
-                <img className='h-[300px] w-full' src={img} alt={roomType} />
+            <div class="card max-w-[380px] h-[470px] bg-base-100 shadow-xl">
+                <img className='h-[300px] w-[330px] object-cover' src={img} alt={roomType} />
                 <div class="card-body">
                     <h2 class="card-title text-[#1b2857fb]">
                         {roomType}

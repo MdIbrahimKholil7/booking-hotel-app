@@ -34,43 +34,45 @@ const Header = ({ children }) => {
 
                 class="drawer-content flex flex-col text-black">
                 {/* <!-- Navbar --> */}
-                {/* bg-[#2623a2af] */}
-                <div class="w-full navbar p-0 nav-border bg-white z-[999] sticky top-0 left-0">
-                    <div>
-                        {
-                            location.pathname.includes('dashboard') && <label for="my-drawer-2" class="pl-2 block bg-white drawer-button lg:hidden"> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block w-6 h-6 stroke-current"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg></label>
-                        }
-                    </div>
-                    <div class="flex-1 px-2 text-3xl font-bold mx-2">Villena</div>
-                    <div class="flex-none hidden lg:block">
-                        <ul class="menu menu-horizontal gap-5 text-black">
-                            {/* <!-- Navbar menu content here --> */}
+                {/* bg-[#2623a2af] */} 
+                <div className='bg-white nav-border'>
+                    <div class="w-full app navbar p-0   z-[999] sticky top-0 left-0">
+                        <div>
                             {
-                                menus.map(({ name, to }, index) => <li
-                                    key={index}
-                                    className='relative font-[500]'
-                                >
-                                    <NavLink className={({ isActive }) => isActive ? 'active-border' : ''} to={to}>{name}</NavLink>
-                                </li>)
-
+                                location.pathname.includes('dashboard') && <label for="my-drawer-2" class="pl-2 block bg-white drawer-button lg:hidden"> <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block w-6 h-6 stroke-current"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg></label>
                             }
-                            <>
+                        </div>
+                        <div class="flex-1 px-2 text-3xl font-bold mx-2">Villena</div>
+                        <div class="flex-none hidden lg:block">
+                            <ul class="menu menu-horizontal gap-5 text-black">
+                                {/* <!-- Navbar menu content here --> */}
                                 {
-                                    user ? <button onClick={handleDetails} className='font-[500] mr-2'>
-                                        <span class="">
-                                            <span class=" rounded-full">
-                                                <img class="w-10 h-12 rounded-full" src={`${img ? img : userImg}`} alt="" />
-                                            </span>
-                                        </span>
-                                    </button> : <li className='font-[500] mr-2'> <NavLink className={({ isActive }) => isActive ? 'flex items-center active-border' : ''} to='/login'>Login</NavLink></li>
+                                    menus.map(({ name, to }, index) => <li
+                                        key={index}
+                                        className='relative font-[500]'
+                                    >
+                                        <NavLink className={({ isActive }) => isActive ? 'active-border' : ''} to={to}>{name}</NavLink>
+                                    </li>)
+
                                 }
-                            </>
-                        </ul>
-                    </div>
-                    <div class="flex-none lg:hidden">
-                        <label for="my-drawer-3" class="btn btn-square btn-ghost">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block w-6 h-6 stroke-current"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
-                        </label>
+                                <>
+                                    {
+                                        user ? <button onClick={handleDetails} className='font-[500] mr-2'>
+                                            <span class="">
+                                                <span class=" rounded-full">
+                                                    <img class="w-10 h-12 rounded-full" src={`${img ? img : userImg}`} alt="" />
+                                                </span>
+                                            </span>
+                                        </button> : <li className='font-[500] mr-2'> <NavLink className={({ isActive }) => isActive ? 'flex items-center active-border' : ''} to='/login'>Login</NavLink></li>
+                                    }
+                                </>
+                            </ul>
+                        </div>
+                        <div class="flex-none lg:hidden">
+                            <label for="my-drawer-3" class="btn btn-square btn-ghost">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block w-6 h-6 stroke-current"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                            </label>
+                        </div>
                     </div>
                 </div>
                 {/* <!-- Page content here --> */}

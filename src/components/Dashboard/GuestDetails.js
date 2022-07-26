@@ -5,7 +5,7 @@ import fetcher from '../../api/fetcher';
 import DeleteModal from './DeleteModal';
 import GuestDetailsCard from './GuestDetailsCard';
 import Loading from '.././Shared/Loading'
-import { motion } from "framer-motion"
+// import { motion } from "framer-motion"
 const GuestDetails = () => {
 
     const [users, setUser] = useState([])
@@ -55,18 +55,18 @@ const GuestDetails = () => {
         <div className='px-5 my-20'>
             <div className='mt-9 flex flex-col md:flex-row justify-between '>
                 <div>
-                    <button onClick={() => handleGuest('all')} className={`mr-7 ${btnStyle === 'all' ? 'px-3 py-2 shadow-xl rounded-md ' : ''}`}>All Status</button>
-                    <button onClick={() => handleGuest('Active')} className={`mr-7 ${btnStyle === 'Active' ? 'px-3 py-2 shadow-xl rounded-md ' : ' '}`}>Active</button>
-                    <button onClick={() => handleGuest('Inactive')} className={`mr-7 ${btnStyle === 'Inactive' ? 'px-3 py-2 shadow-xl rounded-md ' : ' '}`}>Inactive</button>
+                    <button onClick={() => handleGuest('all')} className={`mr-7 ${btnStyle === 'all' ? 'md:px-2 px-1 py-2  shadow-xl rounded-md ' : 'md:px-2 px-1 py-2 '}`}>All Status</button>
+                    <button onClick={() => handleGuest('Active')} className={`mr-7 ${btnStyle === 'Active' ? 'md:px-2 px-1 py-2 shadow-xl rounded-md ' : 'md:px-2 px-1 py-2 '}`}>Active</button>
+                    <button onClick={() => handleGuest('Inactive')} className={`mr-7 ${btnStyle === 'Inactive' ? 'md:px-2 px-1 py-2 shadow-xl rounded-md ' : ' md:px-2 px-1 py-2'}`}>Inactive</button>
                 </div>
                 <div className='mt-16 md:mt-0 flex items-center gap-2'>
                     <label htmlFor="">Search:</label>
                     <input onChange={handleName} type="text" placeholder="Search by name" class="input input-bordered w-full max-w-xs" />
                 </div>
             </div>
-            <motion.div
+            <div
                 layout 
-                className='grid md:grid-cols-2 grid-cols-1 gap-7 justify-content-center mt-20'>
+                className='grid md:grid-cols-2 grid-cols-1 gap-7 justify-content-center mt-20 overflow-x-hidden'>
 
                
                     {
@@ -84,7 +84,7 @@ const GuestDetails = () => {
                             </div>
                     }
                
-            </motion.div>
+            </div>
             <div>
                 {
                     openModal && <DeleteModal

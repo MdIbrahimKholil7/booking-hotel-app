@@ -14,8 +14,10 @@ const SideBar = ({ children }) => {
                 <input id="my-drawer-2" type="checkbox" class="drawer-toggle" />
                 <div class="drawer-content justify-center overflow-hidden">
                     {/* <!-- Page content here --> */}
-                    {children}
-                    
+                    <div className='app'>
+                        {children}
+                    </div>
+
                 </div>
                 <div class="drawer-side ul" >
                     <label for="my-drawer-2" class="drawer-overlay"></label>

@@ -66,7 +66,7 @@ const Details = ({setRoomInformation}) => {
         setRoomInformation({place,options,date})
     }
     return (
-        <div className='w-[95%] mx-auto text-white bg-[#1b2857fb] border-solid border-2 border-indigo-600 py-5 px-7 mt-[-87px] md:mt-[-50px] lg:mt-[-36px] rounded  text-[14px]' >
+        <div className='w-[95%] mx-auto text-white bg-[#1b2857fb] border-solid border-2 border-indigo-600 py-5 px-7 mt-[-87px] md:mt-[-45px] lg:mt-[-46px] rounded  text-[14px]' >
             <div className='grid lg:grid-cols-4 md:grid-cols-2 justify-items-center items-center grid-cols-1 gap-5'>
                 <div>
                     {/*   <input className='bg-transparent text-white outline-none' type="text" placeholder='Where are you going' /> */}

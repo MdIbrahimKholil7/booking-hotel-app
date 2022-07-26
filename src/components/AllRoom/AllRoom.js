@@ -19,7 +19,6 @@ const AllRoom = () => {
         (async () => {
             const { data } = await fetcher('getRoom/getRoomCount')
             const length = Math.ceil(data.result / 4)
-            console.log(data)
             setCount(length)
         })()
     }, [count])
@@ -27,10 +26,10 @@ const AllRoom = () => {
     if (loading) {
         return <Loading />
     }
-    console.log(data)
+
     // console.log(count)
     const handlePageClick = data => {
-        console.log(data)
+
         setPage(data.selected)
         refetch()
 
@@ -38,39 +37,51 @@ const AllRoom = () => {
     return (
         <div className='mt-20'>
 
-            <div className='flex justify-center items-center'>
-                <div className=' lg:w-[90%] w-full mb-[70px] flex flex-col items-center '>
-                    {
-                        data?.data.map(elem => <SearchCard
-                            elem={elem}
-                        />)
-                    }
-                </div>
-            </div>
+            {
+                loading && <div className='min-h-screen'>
 
-            <div className='flex justify-end items-end mb-5'>
-                <div className='w-full   flex items-end justify-end '>
-                    <ReactPaginate
-                        previousLabel={'Prev'}
-                        nextLabel={'Next'}
-                        breakLabel={'...'}
-                        pageCount={count}
-                        marginPagesDisplayed={1}
-                        pageRangeDisplayed={2}
-                        onPageChange={handlePageClick}
-                        containerClassName={'paginateContainer'}
-                        pageClassName={'page-btn'}
-                        previousClassName={'previous'}
-                        previousLinkClassName={'link-btn'}
-                        pageLinkClassName={'link-btn'}
-                        nextClassName={'previous'}
-                        breakClassName={'page-btn'}
-                        breakLinkClassName={'link-btn'}
-                        nextLinkClassName={'link-btn'}
-                        activeClassName={'active-btn'}
-                    />
+                    <h1 className='text-center mt-20'>Loading...</h1>
                 </div>
-            </div>
+            }
+            {
+                data?.data.length &&
+                <div>
+                    <div className='flex justify-center items-center'>
+                        <div className=' lg:w-[90%] w-full mb-[70px] flex flex-col items-center '>
+                            {
+                                data?.data.map(elem => <SearchCard
+                                    elem={elem}
+                                />)
+                            }
+                        </div>
+                    </div>
+
+                    <div className='flex justify-end items-end mb-5'>
+                        <div className='w-full   flex items-end justify-end '>
+                            <ReactPaginate
+                                previousLabel={'Prev'}
+                                nextLabel={'Next'}
+                                breakLabel={'...'}
+                                pageCount={count}
+                                marginPagesDisplayed={1}
+                                pageRangeDisplayed={2}
+                                onPageChange={handlePageClick}
+                                containerClassName={'paginateContainer'}
+                                pageClassName={'page-btn'}
+                                previousClassName={'previous'}
+                                previousLinkClassName={'link-btn'}
+                                pageLinkClassName={'link-btn'}
+                                nextClassName={'previous'}
+                                breakClassName={'page-btn'}
+                                breakLinkClassName={'link-btn'}
+                                nextLinkClassName={'link-btn'}
+                                activeClassName={'active-btn'}
+                            />
+                        </div>
+                    </div>
+
+                </div>
+            }
         </div>
     );
 };

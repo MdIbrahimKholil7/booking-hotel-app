@@ -14,6 +14,7 @@ import auth from '../../firebase_init';
 const SearchResult = () => {
 
   const location = JSON.parse(localStorage.getItem('time-zone'))
+  console.log(location)
   const [city, setCity] = useState(location?.place)
   const [locationCity, setLocationCity] = useState(location?.place)
   const [searchRoom, setSearchRoom] = useState([])

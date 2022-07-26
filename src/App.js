@@ -34,7 +34,7 @@ function App() {
   const [roomInformation, setRoomInformation] = useState({})
   const Home = React.lazy(() => import('../src/components/Home/Home'))
   return (
-    <div className="App max-w-[1380px] mx-auto">
+    <div className="App">
       <RoomInformation.Provider value={roomInformation}>
         <Header>
           <Routes>
