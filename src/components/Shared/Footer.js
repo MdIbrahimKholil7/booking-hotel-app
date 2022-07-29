@@ -6,7 +6,7 @@ import {  BsFillTelephoneFill} from 'react-icons/bs';
 const Footer = () => {
     return (
         <div>
-            <footer className="footer md:justify-items-center z-[-10px] md:grid-cols-4 p-10 bg-base-200 text-base-content">
+            <footer className="footer md:justify-items-center z-[-10px] md:grid-cols-4 p-10 bg-base-200 text-base-content overflow-x-hidden">
                 <div>
                     <span className="footer-title text-xl">Get In Touch</span>
                     <div className='flex justify-between items-center leading-6'>

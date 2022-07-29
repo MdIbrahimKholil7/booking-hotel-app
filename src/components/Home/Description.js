@@ -3,7 +3,7 @@ import reception from '../../assets/images/reception.jpg'
 const Description = () => {
     return (
         <div>
-            <div class="hero min-h-screen bg-base-100">
+            <div class="hero min-h-screen bg-base-100 overflow-x-hidden">
                 <div class="hero-content flex-col lg:flex-row-reverse">
                     <img src={reception} class="w-[320px] md:w-[390px] rounded-lg shadow-2xl" alt='receptionImage'/>
                     <div className='md:pr-9 pr-0 mt-9 md:mt-0 md:w-[47%]'>

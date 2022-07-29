@@ -5,7 +5,7 @@ import VisibilitySensor from 'react-visibility-sensor';
 const Business = () => {
    const [focus, setFocus] = useState(false)
     return (
-        <div className='mt-20 mb-20'>
+        <div className='mt-20 mb-20 overflow-x-hidden'>
            
             <div className=" grid sm:grid-cols-2 md:grid-cols-4 justify-items-center rounded-none py-9 shadow gradient w-full px-9">
                 <div className="stat pl-20 md:pl-0">
@@ -23,7 +23,7 @@ const Business = () => {
                                 }
                             }}>
                                 <div>
-                                    <span className="stat-value" ref={countUpRef} /><span className="stat-value">+</span>
+                                    <span className="stat-value md:text-[36px] text-[26px]" ref={countUpRef} /><span className="stat-value">+</span>
                                    
                                 </div>
                             </VisibilitySensor>
@@ -46,7 +46,7 @@ const Business = () => {
                                 }
                             }}>
                                 <div>
-                                    <span className="stat-value" ref={countUpRef} /><span className="stat-value">K</span>
+                                    <span className="stat-value md:text-[36px] text-[26px]" ref={countUpRef} /><span className="stat-value md:text-[36px] text-[26px] md:text-[36px] text-[26px]">K</span>
                                    
                                 </div>
                             </VisibilitySensor>
@@ -69,7 +69,7 @@ const Business = () => {
                                 }
                             }}>
                                 <div>
-                                    <span className="stat-value" ref={countUpRef} /><span className="stat-value">K+</span>
+                                    <span className="stat-value md:text-[36px] text-[26px]" ref={countUpRef} /><span className="stat-value md:text-[36px] text-[26px]">K+</span>
                                    
                                 </div>
                             </VisibilitySensor>
@@ -91,7 +91,7 @@ const Business = () => {
                                 }
                             }}>
                                 <div>
-                                    <span className="stat-value" ref={countUpRef} /><span className="stat-value">K+</span>
+                                    <span className="stat-value md:text-[36px] text-[26px]" ref={countUpRef} /><span className="stat-value md:text-[36px] text-[26px]">K+</span>
                                    
                                 </div>
                             </VisibilitySensor>

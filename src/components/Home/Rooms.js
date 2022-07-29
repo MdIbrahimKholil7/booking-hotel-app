@@ -12,7 +12,7 @@ const Rooms = () => {
    },[])
  
     return (
-        <div className='my-9 px-5'>
+        <div className='my-9 px-5 overflow-x-hidden pb-12'>
             <div>
             <h1 className='text-4xl font-oleo text-center '><span className='relative room-title ' >Our Rooms</span></h1>
             <p className='text-center my-5 tracking-[7px] md:text-[17px] text-[14px] text-gray-500'>ACROSS THE STREET FROM THE ORDINARY</p>

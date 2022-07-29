@@ -16,6 +16,7 @@ const SearchCard = ({ elem, location }) => {
     const navigate = useNavigate()
     // handle navigate function 
     const handleNavigate = (id) => {
+        console.log(id)
         if (!location) {
             return Swal.fire({
                 position: 'top-center',
@@ -85,7 +86,7 @@ const SearchCard = ({ elem, location }) => {
                                 }
                             </div>
                         </div>
-                        <button onClick={handleNavigate} class="btn btn-primary" disabled={booked}>Book</button>
+                        <button onClick={()=>handleNavigate(_id)} class="btn btn-primary" disabled={booked}>Book</button>
                     </div>
                 </div>
             </div>

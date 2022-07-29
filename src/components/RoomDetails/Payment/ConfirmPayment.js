@@ -16,7 +16,7 @@ const ConfirmPayment = () => {
     console.log(data)
     return (
         <div className='flex justify-center'>
-             <div class="card w-96 bg-base-100 shadow-xl mt-12 ">
+             <div class="card sm:w-96 w-[320px] bg-base-100 shadow-xl mt-12 ">
                 <div class="card-body ">
                     <Elements stripe={stripePromise}>
                         <CheckOut 

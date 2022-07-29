@@ -35,7 +35,7 @@ const Payment = () => {
                         '>
                             <NavLink  to='/payment' className={({ isActive }) => isActive ? 'flex items-center text-black' : 'flex items-center'}  >
                                 1.Reviews House Rules <BiChevronRight
-                                    className='text-[20px]'
+                                    className='md:text-[20px] text-[16px]'
                                 /></NavLink>
                             <NavLink className={({ isActive }) => isActive ? 'flex items-center text-black' : 'flex items-center'}  to='whosComing' >2.Who's Coming ? <BiChevronRight
                                 className='text-[24px]'

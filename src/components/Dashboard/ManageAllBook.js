@@ -50,7 +50,7 @@ const ManageAllBook = () => {
     return (
         <div className='my-14 px-5'>
             <div className='p-4 shadow-lg rounded-lg '>
-                <h1 className='text-2xl text-[#787676]'>All Booking List</h1>
+                <h1 className='sm:text-2xl text-xl  text-[#787676]'>All Booking List</h1>
             </div>
             <div className='mt-9 flex flex-col md:flex-row justify-between '>
                 <div>

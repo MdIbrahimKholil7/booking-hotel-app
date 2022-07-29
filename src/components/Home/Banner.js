@@ -10,7 +10,7 @@ const Banner = () => {
 
             }}
         >
-            <div class="hero h-[76vh]">
+            <div class="hero h-[76vh] overflow-x-hidden">
                 <div class="hero-overlay bg-[#000] bg-opacity-[0.4]"></div>
                 <div class="hero-content justify-start w-full text-start text-neutral-content">
                     <div class="max-w-md">

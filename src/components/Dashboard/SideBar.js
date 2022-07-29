@@ -26,7 +26,7 @@ const SideBar = ({ children }) => {
                         <li className='sidebar'><Link to='/dashboard'>My Profile</Link></li>
                         {
                             !admin && <>
-                                <li className='sidebar'> <Link to='/dashboard/yourBooking'>Your Booking</Link></li>
+                                <li className='sidebar sidebar-text'> <Link to='/dashboard/yourBooking'>Your Booking</Link></li>
                                 <li className='sidebar'><Link to='/dashboard/addReview'>Add Review</Link></li>
                             </>
                         }
@@ -35,7 +35,7 @@ const SideBar = ({ children }) => {
                                 <li className='sidebar'><Link to='/dashboard/allStatus'>All Status</Link></li>
                                 <li className='sidebar'><Link to='/dashboard/guestDetails'>Guest Details</Link></li>
                                 <li className='sidebar'><Link to='/dashboard/manageBook'>Manage Book</Link></li>
-                                <li className='sidebar'><Link to='/dashboard/reviewCheck'>Review Check</Link></li>
+                                <li className='sidebar sidebar-text'><Link to='/dashboard/reviewCheck'>Review Check</Link></li>
                                 <li className='sidebar'><Link to='/dashboard/AddRoom'>Add Room</Link></li>
                             </>
                         }

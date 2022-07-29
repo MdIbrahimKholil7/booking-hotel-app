@@ -71,7 +71,7 @@ const AddRoom = () => {
     }
 
     return (
-        <div className='px-5 my-10'>
+        <div className='md:px-5 px- my-10'>
             <div className='shadow-lg rounded-md mb-5 p-4'>
                 <h1 className='text-2xl text-[#757373]'>Add New Room</h1>
             </div>
@@ -110,12 +110,14 @@ const AddRoom = () => {
                                 className=''
                                 {...getRootProps()}>
                                 <input {...getInputProps()} />
-                                {
-                                    isDragActive ?
-                                        <p>Drop the files here ...</p> :
-                                        <p>Drag your image for upload Or Click</p>
+                                <div >
+                                    {
+                                        isDragActive ?
+                                            <p>Drop the files here ...</p> :
+                                            <p className='px-4'>Drag your image for upload Or Click</p>
 
-                                }
+                                    }
+                                </div>
                                 <div className='mt-9'>
                                     {
                                         image.map(upFile => {

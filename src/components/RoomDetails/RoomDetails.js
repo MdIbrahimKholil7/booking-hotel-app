@@ -38,7 +38,7 @@ const RoomDetails = () => {
         if (name === 'increase') {
             if (imgIndex >= room.length - 1) {
                 setImgIndex(0)
-                console.log('click')
+                
             }
             else {
                 setImgIndex(imgIndex + 1)
