@@ -17,7 +17,7 @@
 - Admin can add room in the hotel website
 
 
-### Which technology i have used in the site
+### Which technology I have used in the site
 - html & css3
 - tailwind css
 - javascript 
