@@ -20,7 +20,7 @@ const ManageAllBook = () => {
         refetch()
 
     }
-    const handleBook=async(status)=>{
+    const handleBook = async (status) => {
 
         if (status === 'all') {
             setBtnStyle('all')
@@ -63,6 +63,7 @@ const ManageAllBook = () => {
                     <input onChange={handleName} type="text" placeholder="Search by name" class="input input-bordered w-full max-w-xs" />
                 </div>
             </div>
+
             <div>
                 <div className="overflow-x-auto px-3 py-12">
                     <table className="table table-zebra w-full">
