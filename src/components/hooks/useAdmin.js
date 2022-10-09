@@ -8,7 +8,6 @@ const useAdmin = (user) => {
     useEffect(() => {
         if (user?.email) {
             (async () => {
-              
                 const { data } = await axios.get(`https://mighty-beyond-31065.herokuapp.com/user/get-admin?email=${user?.email}`)
                
                 console.log(data[0].admin)

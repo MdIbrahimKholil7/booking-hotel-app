@@ -46,7 +46,7 @@ const Business = () => {
                                 }
                             }}>
                                 <div>
-                                    <span className="stat-value md:text-[36px] text-[26px]" ref={countUpRef} /><span className="stat-value md:text-[36px] text-[26px] md:text-[36px] text-[26px]">K</span>
+                                    <span className="stat-value md:text-[36px] text-[26px]" ref={countUpRef} /><span className="stat-value md:text-[36px] text-[26px]">K</span>
                                    
                                 </div>
                             </VisibilitySensor>

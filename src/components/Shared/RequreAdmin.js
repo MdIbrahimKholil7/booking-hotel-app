@@ -5,6 +5,7 @@ import { useLocation,Navigate } from 'react-router-dom';
 import Loading from './Loading';
 import useAdmin from '../hooks/useAdmin';
 import { signOut } from 'firebase/auth';
+
 const RequireAdmin = ({children}) => {
     const [user,loading]=useAuthState(auth)
     const location=useLocation()
