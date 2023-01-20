@@ -25,7 +25,7 @@ const AddReview = () => {
         if (e.target.review.value === '') {
             return
         }
-        const { data } = await axios.put(`https://mighty-beyond-31065.herokuapp.com/review/put-review`,{
+        const { data } = await axios.put(`https://hotel-server-2.vercel.app/review/put-review`,{
             review:e.target.review.value,
             rating,
             img:userData?.img,

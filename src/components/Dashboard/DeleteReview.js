@@ -12,7 +12,7 @@ const DeleteReview = ({ setOpenModal, refetch, openModal }) => {
 
     // console.log(_id)
     const handleDelete = async (id) => {
-        fetch(`https://mighty-beyond-31065.herokuapp.com/review/delete-review`, {
+        fetch(`https://hotel-server-2.vercel.app/review/delete-review`, {
             method: 'DELETE',
             headers: {
                 'content-type': 'application/json'

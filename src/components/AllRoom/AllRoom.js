@@ -29,10 +29,8 @@ const AllRoom = () => {
 
     // console.log(count)
     const handlePageClick = data => {
-
         setPage(data.selected)
         refetch()
-
     }
     return (
         <div className='mt-20'>

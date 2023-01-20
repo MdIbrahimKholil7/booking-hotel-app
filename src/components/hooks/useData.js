@@ -5,7 +5,7 @@ const useData=(id)=>{
     const [data, setData] = useState({})
     useEffect(() => {
         (async () => {
-            const { data } = await axios.get(`https://mighty-beyond-31065.herokuapp.com/getRoom/room/${id}`)
+            const { data } = await axios.get(`https://hotel-server-2.vercel.app/getRoom/room/${id}`)
             setData(data)
         })()
     }, [id])

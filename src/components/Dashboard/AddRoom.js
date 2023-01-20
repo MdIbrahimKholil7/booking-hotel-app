@@ -55,7 +55,7 @@ const AddRoom = () => {
         }
 
         // if (!roomName || !city || !roomType || !price || !desc) return
-        const { data: details } = await axios.post('https://mighty-beyond-31065.herokuapp.com/getRoom/post-room', { room })
+        const { data: details } = await axios.post('https://hotel-server-2.vercel.app/getRoom/post-room', { room })
             .then(res => Swal.fire({
                 position: 'top-center',
                 icon: 'success',
@@ -66,7 +66,7 @@ const AddRoom = () => {
 
         console.log(details)
         e.target.reset()
-        /* const {data}=await axios.post('https://mighty-beyond-31065.herokuapp.com/getRoom/post-room')
+        /* const {data}=await axios.post('https://hotel-server-2.vercel.app/getRoom/post-room')
         console.log(data) */
     }
 

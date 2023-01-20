@@ -21,7 +21,7 @@ const MyProfile = () => {
     const navigate = useNavigate()
     const {data,loading}=useQuery(['set-image',imgUrl],()=>{
         if (imgUrl) {
-            const { data } = axios.put('https://mighty-beyond-31065.herokuapp.com/user/put-userInformation', {
+            const { data } = axios.put('https://hotel-server-2.vercel.app/user/put-userInformation', {
                 img: imgUrl,
                 email: user?.email
             })

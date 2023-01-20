@@ -12,7 +12,7 @@ const GuestDetails = () => {
     const [filterUser, setFilterUser] = useState([])
     const [btnStyle, setBtnStyle] = useState('all')
     const [openModal, setOpenModal] = useState(null)
-    const url = `https://mighty-beyond-31065.herokuapp.com/user/delete-user`
+    const url = `https://hotel-server-2.vercel.app/user/delete-user`
 
     const { loading, data, refetch } = useQuery(['all-user'], () => fetcher('/user/all-user'))
     useEffect(() => {

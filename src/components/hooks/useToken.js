@@ -7,7 +7,7 @@ const useToken = (user,name) => {
     useEffect(() => {
         (async () => {
             if (user?.email) {
-                const { data } = await axios.put('https://mighty-beyond-31065.herokuapp.com/user/user-token',{
+                const { data } = await axios.put('https://hotel-server-2.vercel.app/user/user-token',{
                     name:name,
                     email:user?.email
                 })
